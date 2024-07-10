@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'; // Asegúrate de agregar intl a tus dependencias en pubspec.yaml
+import 'package:intl/intl.dart';
+import '../screens/screens.dart';
 
 class SelectingSchedule extends StatefulWidget {
   const SelectingSchedule({
     super.key,
+    required this.buttomConfirmReserve,
   });
+
+  final bool buttomConfirmReserve;
 
   @override
   State<SelectingSchedule> createState() => _SelectingScheduleState();
@@ -151,32 +155,45 @@ class _SelectingScheduleState extends State<SelectingSchedule> {
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             const SizedBox(height: 20),
             Container(
-              height: 100, // Establece la altura deseada
-              child: TextField(
-                  keyboardType: TextInputType.multiline,
-                  maxLines: 4, // Ajusta esto según tus necesidades
-                  decoration: InputDecoration(
-                      hintText: "Escribe tu comentario aquí...",
-                      filled: true, // Habilita el relleno de color
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(color: Colors.white, width: 2),
-                        borderRadius: BorderRadius.circular(8),
-                      ))),
-            ),
+                height: 100, // Establece la altura deseada
+                child: TextField(
+                    autofocus: false,
+                    keyboardType: TextInputType.multiline,
+                    maxLines: 4, // Ajusta esto según tus necesidades
+                    decoration: InputDecoration(
+                        hintText: "Agrega un comentario...",
+                        filled: true, // Habilita el relleno de color
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: Colors.white, width: 2),
+                          borderRadius: BorderRadius.circular(8),
+                        )
+                        // remueve el focus
+
+                        ))),
             const SizedBox(height: 30),
             GestureDetector(
               onTap: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => const HomeScreen(),
-                //   ),
-                // );
+                if (!widget.buttomConfirmReserve ) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ConfirmReserveScreen(),
+                    ),
+                  );
+                }
+                if (widget.buttomConfirmReserve ) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ResumeScreen(),
+                    ),
+                  );
+                }
               },
               child: Container(
                 width: size.width,
@@ -185,9 +202,9 @@ class _SelectingScheduleState extends State<SelectingSchedule> {
                   borderRadius: BorderRadius.circular(20),
                   color: const Color.fromARGB(255, 92, 141, 9),
                 ),
-                child: const Center(
-                    child: Text('Reservar',
-                        style: TextStyle(
+                child:  Center(
+                    child: Text( widget.buttomConfirmReserve ? 'Confirmar reserva' : 'Reservar',
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,

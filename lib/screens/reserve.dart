@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
 import '../widgets/widgets.dart';
 
 class ReserveScreen extends StatefulWidget {
@@ -115,8 +114,8 @@ class _ReserveScreenState extends State<ReserveScreen> {
               child: const SingleChildScrollView(
                 child: Column(
                   children: [
-                    ReserveDetails(),
-                    SelectingSchedule(),
+                    ReserveDetails(reserveDetails: false,),
+                    SelectingSchedule(buttomConfirmReserve: false,),
                   ],
                 ),
               ),

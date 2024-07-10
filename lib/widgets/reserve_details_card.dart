@@ -1,10 +1,11 @@
-
 import 'package:flutter/material.dart';
 
 class ReserveDetails extends StatefulWidget {
   const ReserveDetails({
     super.key,
+    required this.reserveDetails,
   });
+  final bool reserveDetails;
 
   @override
   State<ReserveDetails> createState() => _ReserveDetailsState();
@@ -25,7 +26,7 @@ class _ReserveDetailsState extends State<ReserveDetails> {
     return Container(
       color: Colors.white,
       width: size.width,
-      height: size.height * 0.3 + 6,
+      height: !widget.reserveDetails ? size.height * 0.3 + 6 : size.height * 0.2,
       child: Padding(
         padding: const EdgeInsets.only(left: 30, right: 30, top: 20),
         child: Column(
@@ -121,37 +122,40 @@ class _ReserveDetailsState extends State<ReserveDetails> {
                     style: TextStyle(color: Colors.black, fontSize: 18)),
               ],
             ),
-            Container(
-              margin: const EdgeInsets.only(top: 20),
-              padding: const EdgeInsets.symmetric(horizontal: 12,),
-              width: size.width * 0.6,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey), // Color del borde
-                borderRadius: BorderRadius.circular(12), // Radio del borde
-              ),
-              child: DropdownButton<String>(
-                value: selectedItem,
-                icon: const Icon(Icons.keyboard_arrow_down_rounded, size: 30),
-                elevation: 16,
-                style: const TextStyle(color: Colors.black, fontSize: 18),
-                underline:
-                    Container(), // Elimina la línea subrayada por defecto
-                onChanged: (String? newValue) {
-                  setState(() {
-                    selectedItem = newValue;
-                  });
-                },
-                items:
-                    dropdownItems.map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                isExpanded:
-                    true, // Hace que el DropdownButton se expanda para llenar el Container
-              ),
-            )
+            if (!widget.reserveDetails)
+              Container(
+                margin: const EdgeInsets.only(top: 20),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                ),
+                width: size.width * 0.6,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey), // Color del borde
+                  borderRadius: BorderRadius.circular(12), // Radio del borde
+                ),
+                child: DropdownButton<String>(
+                  value: selectedItem,
+                  icon: const Icon(Icons.keyboard_arrow_down_rounded, size: 30),
+                  elevation: 16,
+                  style: const TextStyle(color: Colors.black, fontSize: 18),
+                  underline:
+                      Container(), // Elimina la línea subrayada por defecto
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedItem = newValue;
+                    });
+                  },
+                  items: dropdownItems
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  isExpanded:
+                      true, // Hace que el DropdownButton se expanda para llenar el Container
+                ),
+              )
           ],
         ),
       ),

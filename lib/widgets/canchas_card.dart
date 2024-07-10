@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../screens/screens.dart';
 
 class CanchasCard extends StatelessWidget {
