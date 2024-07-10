@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
+import '../widgets/widgets.dart';
+
 class ReserveScreen extends StatefulWidget {
   const ReserveScreen({super.key});
 
@@ -105,6 +107,22 @@ class _ReserveScreenState extends State<ReserveScreen> {
               ],
             ),
           ),
+          Container(
+            color: Colors.red,
+            width: size.width,
+            height: size.height * 0.7,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const ReserveDetails(),
+                  Container(
+                      color: Colors.blue[50],
+                      width: size.width,
+                      height: size.height * 0.5)
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
