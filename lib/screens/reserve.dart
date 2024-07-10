@@ -111,14 +111,11 @@ class _ReserveScreenState extends State<ReserveScreen> {
             color: Colors.red,
             width: size.width,
             height: size.height * 0.7,
-            child: SingleChildScrollView(
+            child: const SingleChildScrollView(
               child: Column(
                 children: [
-                  const ReserveDetails(),
-                  Container(
-                      color: Colors.blue[50],
-                      width: size.width,
-                      height: size.height * 0.5)
+                  ReserveDetails(),
+                  SelectingSchedule(),
                 ],
               ),
             ),
