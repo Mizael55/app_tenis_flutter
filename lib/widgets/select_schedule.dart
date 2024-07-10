@@ -54,7 +54,7 @@ class _SelectingScheduleState extends State<SelectingSchedule> {
     return Container(
       color: Colors.blue[50],
       width: size.width,
-      height: size.height * 0.5,
+      height: size.height * 0.6,
       child: Padding(
         padding: const EdgeInsets.only(left: 20, top: 20, right: 20),
         child: Column(
@@ -66,6 +66,7 @@ class _SelectingScheduleState extends State<SelectingSchedule> {
                     color: Colors.black,
                     fontSize: 24,
                     fontWeight: FontWeight.bold)),
+            const SizedBox(height: 15),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 8),
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -144,7 +145,55 @@ class _SelectingScheduleState extends State<SelectingSchedule> {
                   ),
                 ),
               ],
-            )
+            ),
+            const SizedBox(height: 20),
+            const Text('Agregar un comentario',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 20),
+            Container(
+              height: 100, // Establece la altura deseada
+              child: TextField(
+                  keyboardType: TextInputType.multiline,
+                  maxLines: 4, // Ajusta esto según tus necesidades
+                  decoration: InputDecoration(
+                      hintText: "Escribe tu comentario aquí...",
+                      filled: true, // Habilita el relleno de color
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            const BorderSide(color: Colors.white, width: 2),
+                        borderRadius: BorderRadius.circular(8),
+                      ))),
+            ),
+            const SizedBox(height: 30),
+            GestureDetector(
+              onTap: () {
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => const HomeScreen(),
+                //   ),
+                // );
+              },
+              child: Container(
+                width: size.width,
+                height: size.height / 14,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: const Color.fromARGB(255, 92, 141, 9),
+                ),
+                child: const Center(
+                    child: Text('Reservar',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ))),
+              ),
+            ),
           ],
         ),
       ),
