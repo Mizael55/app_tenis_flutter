@@ -1,3 +1,4 @@
+export 'package:app_tenis/widgets/pay_card.dart';
 export 'package:app_tenis/widgets/resumen_card.dart';
 export 'package:app_tenis/widgets/select_schedule_card.dart';
 export 'package:app_tenis/widgets/reserve_details_card.dart';

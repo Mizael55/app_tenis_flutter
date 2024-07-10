@@ -63,11 +63,12 @@ class ResumeScreen extends StatelessWidget {
             child: Container(
               width: size.width,
               height: size.height * 0.7,
-              child: const SingleChildScrollView(
+              child:  const SingleChildScrollView(
                 child: Column(
                   children: [
                     ReserveDetails( reserveDetails: true,),
                     ResumeCard(),
+                    PayCard()
                   ],
                 ),
               ),

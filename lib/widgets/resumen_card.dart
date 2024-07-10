@@ -11,12 +11,17 @@ class ResumeCard extends StatelessWidget {
         height: size.height * 0.2 - 30,
         color: Colors.blue[50],
         child: const Padding(
-          padding: EdgeInsets.only(left: 20, right: 20, top: 20,),
+          padding: EdgeInsets.only(
+            left: 20,
+            right: 20,
+            top: 20,
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Resumen', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              Text('Resumen',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -35,7 +40,6 @@ class ResumeCard extends StatelessWidget {
                       Text('10 de julio 2024', style: TextStyle(fontSize: 15)),
                     ],
                   ),
-          
                 ],
               ),
               SizedBox(height: 10),
@@ -46,7 +50,8 @@ class ResumeCard extends StatelessWidget {
                     children: [
                       Icon(Icons.person_2_outlined, size: 20),
                       SizedBox(width: 5),
-                      Text('Instructor: Mark Gonzales', style: TextStyle(fontSize: 15)),
+                      Text('Instructor: Mark Gonzales',
+                          style: TextStyle(fontSize: 15)),
                     ],
                   ),
                   Row(
@@ -56,10 +61,8 @@ class ResumeCard extends StatelessWidget {
                       Text('2 horas', style: TextStyle(fontSize: 15)),
                     ],
                   ),
-          
                 ],
               ),
-              
             ],
           ),
         ));
