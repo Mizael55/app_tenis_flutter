@@ -86,7 +86,7 @@ class CanchasCard extends StatelessWidget {
                                   ),
                                   const SizedBox(width: 5),
                                   const Text(
-                                    '30 %',
+                                    '30%',
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 20,
@@ -122,18 +122,18 @@ class CanchasCard extends StatelessWidget {
                               Text('Disponible',
                                   style: TextStyle(
                                       color: Colors.black, fontSize: 16)),
-                              SizedBox(width: 8),
+                              SizedBox(width: 4),
                               CircleAvatar(
                                 radius: 5,
                                 backgroundColor: Colors.blue,
                               ),
-                              SizedBox(width: 8),
+                              SizedBox(width: 4),
                               Icon(
                                 Icons.access_time,
                                 color: Colors.black,
                                 size: 20,
                               ),
-                              SizedBox(width: 8),
+                              SizedBox(width: 4),
                               Text('7:00 am a 4:00 pm',
                                   style: TextStyle(
                                       color: Colors.black, fontSize: 16)),
@@ -151,8 +151,10 @@ class CanchasCard extends StatelessWidget {
                           },
                           child: Container(
                             width: size.width * 0.5,
-                            height: size.height * 0.06,
-                            margin: const EdgeInsets.only(top: 60),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: size.width * 0.1,
+                                vertical: size.height * 0.01),
+                            margin: const EdgeInsets.only(top: 40),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: const Color.fromARGB(255, 92, 141, 9),
