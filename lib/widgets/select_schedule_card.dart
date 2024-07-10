@@ -73,7 +73,7 @@ class _SelectingScheduleState extends State<SelectingSchedule> {
             const SizedBox(height: 15),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 8),
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+              padding: const EdgeInsets.symmetric(horizontal: 12, ),
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: Colors.grey),
@@ -87,7 +87,7 @@ class _SelectingScheduleState extends State<SelectingSchedule> {
                       : DateFormat('yyyy-MM-dd').format(selectedDate!)),
                   IconButton(
                     icon:
-                        const Icon(Icons.keyboard_arrow_down_rounded, size: 40),
+                        const Icon(Icons.keyboard_arrow_down_rounded, size: 30),
                     onPressed: () => _selectDate(context),
                   ),
                 ],
@@ -115,7 +115,7 @@ class _SelectingScheduleState extends State<SelectingSchedule> {
                           : startTime!.format(context)),
                       IconButton(
                         icon: const Icon(Icons.keyboard_arrow_down_rounded,
-                            size: 40),
+                            size: 30),
                         onPressed: () =>
                             _selectTime(context, isStartTime: true),
                       ),
@@ -141,7 +141,7 @@ class _SelectingScheduleState extends State<SelectingSchedule> {
                           : endTime!.format(context)),
                       IconButton(
                         icon: const Icon(Icons.keyboard_arrow_down_rounded,
-                            size: 40),
+                            size: 30),
                         onPressed: () =>
                             _selectTime(context, isStartTime: false),
                       ),

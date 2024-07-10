@@ -26,7 +26,7 @@ class _ReserveDetailsState extends State<ReserveDetails> {
     return Container(
       color: Colors.white,
       width: size.width,
-      height: !widget.reserveDetails ? size.height * 0.3 + 6 : size.height * 0.2,
+      height: !widget.reserveDetails ? size.height * 0.3 + 6 : size.height * 0.2 + 20,
       child: Padding(
         padding: const EdgeInsets.only(left: 30, right: 30, top: 20),
         child: Column(
