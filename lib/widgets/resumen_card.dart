@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../models/models.dart';
+
 class ResumeCard extends StatelessWidget {
-  const ResumeCard({super.key});
+  const ResumeCard({super.key, required this.reserveDetailsCanchaSelected});
+  final CanchasModels reserveDetailsCanchaSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -10,8 +13,8 @@ class ResumeCard extends StatelessWidget {
         width: size.width,
         height: size.height * 0.2 - 30,
         color: Colors.blue[50],
-        child: const Padding(
-          padding: EdgeInsets.only(
+        child: Padding(
+          padding: const EdgeInsets.only(
             left: 20,
             right: 20,
             top: 20,
@@ -20,30 +23,32 @@ class ResumeCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Resumen',
+              const Text('Resumen',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.sports_tennis, size: 20),
-                      SizedBox(width: 5),
-                      Text('Cancha tipo A', style: TextStyle(fontSize: 15)),
+                      const Icon(Icons.sports_tennis, size: 20),
+                      const SizedBox(width: 5),
+                      Text(reserveDetailsCanchaSelected.type,
+                          style: const TextStyle(fontSize: 15)),
                     ],
                   ),
                   Row(
                     children: [
-                      Icon(Icons.calendar_today_outlined, size: 20),
-                      SizedBox(width: 5),
-                      Text('10 de julio 2024', style: TextStyle(fontSize: 15)),
+                      const Icon(Icons.calendar_today_outlined, size: 20),
+                      const SizedBox(width: 5),
+                      Text(DateTime.now().toString().substring(0, 10),
+                          style: const TextStyle(fontSize: 15)),
                     ],
                   ),
                 ],
               ),
-              SizedBox(height: 10),
-              Row(
+              const SizedBox(height: 10),
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(

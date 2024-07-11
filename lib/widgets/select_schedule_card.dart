@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../models/models.dart';
 import '../screens/screens.dart';
 
-class SelectingSchedule extends StatefulWidget {
-  const SelectingSchedule({
+class SelectingScheduleAndBottom extends StatefulWidget {
+  const SelectingScheduleAndBottom({
     super.key,
-    required this.buttomConfirmReserve,
+    required this.canchaDetails,
   });
 
-  final bool buttomConfirmReserve;
+  final CanchasModels canchaDetails;
 
   @override
-  State<SelectingSchedule> createState() => _SelectingScheduleState();
+  State<SelectingScheduleAndBottom> createState() =>
+      _SelectingScheduleAndBottomState();
 }
 
-class _SelectingScheduleState extends State<SelectingSchedule> {
+class _SelectingScheduleAndBottomState
+    extends State<SelectingScheduleAndBottom> {
   DateTime? selectedDate;
   TimeOfDay? startTime;
   TimeOfDay? endTime;
@@ -73,7 +76,9 @@ class _SelectingScheduleState extends State<SelectingSchedule> {
             const SizedBox(height: 15),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 8),
-              padding: const EdgeInsets.symmetric(horizontal: 12, ),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 12,
+              ),
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: Colors.grey),
@@ -178,22 +183,14 @@ class _SelectingScheduleState extends State<SelectingSchedule> {
             const SizedBox(height: 30),
             GestureDetector(
               onTap: () {
-                if (!widget.buttomConfirmReserve ) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ConfirmReserveScreen(),
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResumeScreen(
+                      canchaDetails: widget.canchaDetails,
                     ),
-                  );
-                }
-                if (widget.buttomConfirmReserve ) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ResumeScreen(),
-                    ),
-                  );
-                }
+                  ),
+                );
               },
               child: Container(
                 width: size.width,
@@ -202,9 +199,9 @@ class _SelectingScheduleState extends State<SelectingSchedule> {
                   borderRadius: BorderRadius.circular(20),
                   color: const Color.fromARGB(255, 92, 141, 9),
                 ),
-                child:  Center(
-                    child: Text( widget.buttomConfirmReserve ? 'Confirmar reserva' : 'Reservar',
-                        style: const TextStyle(
+                child: const Center(
+                    child: Text('Reservar',
+                        style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,

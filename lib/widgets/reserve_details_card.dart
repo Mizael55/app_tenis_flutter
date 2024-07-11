@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../models/models.dart';
+
 class ReserveDetails extends StatefulWidget {
   const ReserveDetails({
     super.key,
-    required this.reserveDetails,
+    required this.reserveDetails, required this.reserveDetailsCanchaSelected,
   });
   final bool reserveDetails;
+  final CanchasModels reserveDetailsCanchaSelected;
 
   @override
   State<ReserveDetails> createState() => _ReserveDetailsState();
@@ -19,7 +22,6 @@ class _ReserveDetailsState extends State<ReserveDetails> {
     final List<String> dropdownItems = [
       'Agregar Instructor',
       'Mario Soto',
-      'Carlos Perez'
     ];
     // Paso 2: Variable para almacenar el valor seleccionado.
     String? selectedItem = 'Agregar Instructor';
@@ -36,10 +38,10 @@ class _ReserveDetailsState extends State<ReserveDetails> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('Epic Box',
+                 Text(widget.reserveDetailsCanchaSelected.title,
                     style:
-                        TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
-                Text('\$25',
+                        const TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
+                Text('\$${widget.reserveDetailsCanchaSelected.price}',
                     style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
@@ -49,9 +51,9 @@ class _ReserveDetailsState extends State<ReserveDetails> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('Cancha tipo A',
+                 Text(widget.reserveDetailsCanchaSelected.type,
                     style:
-                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 Text('por hora',
                     style: TextStyle(
                         fontSize: 18,
@@ -63,26 +65,26 @@ class _ReserveDetailsState extends State<ReserveDetails> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Row(
+                 Row(
                   children: [
-                    Text('Disponible',
-                        style: TextStyle(color: Colors.black, fontSize: 16)),
-                    SizedBox(width: 2),
-                    CircleAvatar(
+                    Text(widget.reserveDetailsCanchaSelected.available ? 'Disponible' : 'No disponible',
+                        style: const TextStyle(color: Colors.black, fontSize: 16)),
+                    const SizedBox(width: 2),
+                    const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.blue,
                     ),
-                    SizedBox(width: 2),
-                    Row(
+                    const SizedBox(width: 2),
+                     Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.access_time,
                           color: Colors.black,
                           size: 20,
                         ),
-                        Text('7:00 am a 4:00 pm',
+                        Text(widget.reserveDetailsCanchaSelected.schedule,
                             style:
-                                TextStyle(color: Colors.black, fontSize: 16)),
+                                const TextStyle(color: Colors.black, fontSize: 16)),
                       ],
                     ),
                   ],
@@ -130,8 +132,8 @@ class _ReserveDetailsState extends State<ReserveDetails> {
                 ),
                 width: size.width * 0.6,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey), // Color del borde
-                  borderRadius: BorderRadius.circular(12), // Radio del borde
+                  border: Border.all(color: Colors.grey), 
+                  borderRadius: BorderRadius.circular(12),
                 ),
                 child: DropdownButton<String>(
                   value: selectedItem,
@@ -139,7 +141,7 @@ class _ReserveDetailsState extends State<ReserveDetails> {
                   elevation: 16,
                   style: const TextStyle(color: Colors.black, fontSize: 18),
                   underline:
-                      Container(), // Elimina la línea subrayada por defecto
+                      Container(), 
                   onChanged: (String? newValue) {
                     setState(() {
                       selectedItem = newValue;

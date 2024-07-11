@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/providers.dart';
 import '../widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -6,6 +8,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final getCanchasList = Provider.of<CanchasProvider>(context).canchas;
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
@@ -33,7 +36,7 @@ class HomeScreen extends StatelessWidget {
               color: Colors.grey.shade400,
               height: 0,
             ),
-            const CanchasCard(),
+            CanchasCard(canchasList: getCanchasList),
             Divider(
               color: Colors.grey.shade400,
               height: 0,

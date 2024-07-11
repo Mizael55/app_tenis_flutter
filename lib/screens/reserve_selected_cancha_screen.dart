@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import '../models/models.dart';
 import '../widgets/widgets.dart';
 
 class ReserveScreen extends StatefulWidget {
-  const ReserveScreen({super.key});
+  const ReserveScreen({super.key, required this.canchaDetails});
+
+  final CanchasModels canchaDetails;
 
   @override
   State<ReserveScreen> createState() => _ReserveScreenState();
@@ -111,11 +114,14 @@ class _ReserveScreenState extends State<ReserveScreen> {
               color: Colors.white,
               width: size.width,
               height: size.height * 0.7,
-              child: const SingleChildScrollView(
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    ReserveDetails(reserveDetails: false,),
-                    SelectingSchedule(buttomConfirmReserve: false,),
+                    ReserveDetails(
+                        reserveDetails: false,
+                        reserveDetailsCanchaSelected: widget.canchaDetails),
+                    SelectingScheduleAndBottom(
+                        canchaDetails: widget.canchaDetails),
                   ],
                 ),
               ),

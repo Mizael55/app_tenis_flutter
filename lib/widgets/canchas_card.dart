@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../providers/providers.dart';
+import '../models/models.dart';
 import '../screens/screens.dart';
 
 class CanchasCard extends StatelessWidget {
-  const CanchasCard({
-    super.key,
-  });
+  const CanchasCard({super.key, required this.canchasList});
+
+  final List<CanchasModels> canchasList;
 
   @override
   Widget build(BuildContext context) {
-    final getCanchasList = Provider.of<CanchasProvider>(context).canchas;
     final size = MediaQuery.of(context).size;
     return SizedBox(
       width: size.width,
@@ -37,9 +35,9 @@ class CanchasCard extends StatelessWidget {
               margin: const EdgeInsets.only(top: 16),
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: getCanchasList.length,
+                itemCount: canchasList.length,
                 itemBuilder: (context, index) {
-                  final cancha = getCanchasList[index];
+                  final cancha = canchasList[index];
                   return Container(
                     width: size.width * 0.7,
                     height: size.height * 0.3,
@@ -66,7 +64,7 @@ class CanchasCard extends StatelessWidget {
                               left: 10, right: 10, top: 10),
                           child: Row(
                             children: [
-                               Text(
+                              Text(
                                 cancha.title,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 1,
@@ -98,7 +96,7 @@ class CanchasCard extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 10),
-                         Padding(
+                        Padding(
                           padding: const EdgeInsets.only(left: 10),
                           child: Row(
                             children: [
@@ -115,12 +113,14 @@ class CanchasCard extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 10),
-                         Padding(
+                        Padding(
                           padding: const EdgeInsets.only(left: 10),
                           child: Row(
                             children: [
                               Text(
-                                cancha.available ? 'Disponible' : 'No disponible',
+                                  cancha.available
+                                      ? 'Disponible'
+                                      : 'No disponible',
                                   style: const TextStyle(
                                       color: Colors.black, fontSize: 16)),
                               const SizedBox(width: 2),
@@ -137,8 +137,8 @@ class CanchasCard extends StatelessWidget {
                               const SizedBox(width: 4),
                               Flexible(
                                 child: Text(cancha.schedule,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
                                     style: const TextStyle(
                                         color: Colors.black, fontSize: 16)),
                               ),
@@ -150,7 +150,9 @@ class CanchasCard extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const ReserveScreen(),
+                                builder: (context) =>  ReserveScreen(
+                                  canchaDetails: cancha,
+                                ),
                               ),
                             );
                           },

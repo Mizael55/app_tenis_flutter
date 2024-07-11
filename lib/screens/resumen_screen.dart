@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import '../models/models.dart';
 import '../widgets/widgets.dart';
 
 class ResumeScreen extends StatelessWidget {
-  const ResumeScreen({super.key});
+  const ResumeScreen({super.key, required this.canchaDetails});
+
+  final CanchasModels canchaDetails;
 
   @override
   Widget build(BuildContext context) {
@@ -63,13 +66,13 @@ class ResumeScreen extends StatelessWidget {
             child: SizedBox(
               width: size.width,
               height: size.height * 0.7,
-              child: const SingleChildScrollView(
+              child:  SingleChildScrollView(
                 child: Column(
                   children: [
                     ReserveDetails(
-                      reserveDetails: true,
+                      reserveDetails: true, reserveDetailsCanchaSelected: canchaDetails,
                     ),
-                    ResumeCard(),
+                    ResumeCard(reserveDetailsCanchaSelected: canchaDetails,),
                     PayCard()
                   ],
                 ),
