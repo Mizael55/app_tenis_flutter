@@ -66,4 +66,10 @@ class DBProvider {
     final res = await db!.query('Tennis');
     return res.isNotEmpty ? res.map((s) => AddCanchasModel.fromJson(s)).toList() : [];
   }
+
+  Future<int> deleteCancha(int id) async {
+    final db = await database;
+    final res = await db!.delete('Tennis', where: 'id = ?', whereArgs: [id]);
+    return res;
+  }
 }

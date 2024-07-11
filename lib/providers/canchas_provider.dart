@@ -27,6 +27,11 @@ class CanchasProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  deleteCancha(int id) async {
+    await DBProvider.db.deleteCancha(id);
+    loadAllCanchaRentered();
+  }
+
   getCanchasJson() async {
     final response = await rootBundle.loadString('assets/img/canchas.json');
     final data = json.decode(response);

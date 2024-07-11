@@ -109,13 +109,34 @@ class ReservasProgramadasCard extends StatelessWidget {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                Text(cancha.title,
-                                                    style: const TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: 24,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    )),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Text(cancha.title,
+                                                        style: const TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 24,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        )),
+                                                    // agrega un icon para e;iminar
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              right: 15),
+                                                      child: IconButton(
+                                                          icon: const Icon(
+                                                              Icons.delete),
+                                                          onPressed: () async {
+                                                            await getCanchasResevered
+                                                                .deleteCancha(
+                                                                    cancha.id);
+                                                          }),
+                                                    ),
+                                                  ],
+                                                ),
                                                 const SizedBox(
                                                   height: 6,
                                                 ),
