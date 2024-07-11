@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'providers/providers.dart';
 import 'screens/screens.dart';
 
 void main() {
@@ -10,13 +12,18 @@ class MyApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Tenis Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => HandleRouteProvider()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Tenis Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home:  const InitOrRegisterSessionScreen(),
       ),
-      home: const InitOrRegisterSessionScreen(),
     );
   }
 }

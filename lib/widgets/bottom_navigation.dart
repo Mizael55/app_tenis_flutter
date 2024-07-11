@@ -1,4 +1,6 @@
+import 'package:app_tenis/providers/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BottomNavigation extends StatelessWidget {
   const BottomNavigation({
@@ -7,7 +9,10 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final handleRouteProvider = Provider.of<HandleRouteProvider>(context);
+    final currentIndex = handleRouteProvider.selectedMenuOpt;
     return BottomNavigationBar(
+      currentIndex: currentIndex,
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home, size: 34),
@@ -22,6 +27,9 @@ class BottomNavigation extends StatelessWidget {
           label: 'Favoritos',
         ),
       ],
+      onTap: (i) {
+        handleRouteProvider.selectedMenuOpt = i;
+      },
       selectedItemColor: const Color.fromARGB(255, 29, 187, 15),
       unselectedItemColor: Colors.black45,
       showSelectedLabels: true,

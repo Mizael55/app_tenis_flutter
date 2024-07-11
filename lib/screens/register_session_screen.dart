@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../routes/route_bottom_navigation.dart';
 import 'screens.dart';
 
 class RegisterSessionScreen extends StatelessWidget {
@@ -186,7 +187,7 @@ class RegisterSessionScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const HomeScreen(),
+                              builder: (context) => const SelectScreenRoute(),
                             ),
                           );
                         },

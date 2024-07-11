@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import '../widgets/widgets.dart';
 
 class ResumeScreen extends StatelessWidget {
-   
   const ResumeScreen({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -60,13 +59,15 @@ class ResumeScreen extends StatelessWidget {
             ),
           ),
           Flexible(
-            child: Container(
+            child: SizedBox(
               width: size.width,
               height: size.height * 0.7,
-              child:  const SingleChildScrollView(
+              child: const SingleChildScrollView(
                 child: Column(
                   children: [
-                    ReserveDetails( reserveDetails: true,),
+                    ReserveDetails(
+                      reserveDetails: true,
+                    ),
                     ResumeCard(),
                     PayCard()
                   ],
