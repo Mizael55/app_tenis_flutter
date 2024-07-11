@@ -145,7 +145,7 @@ class MyReservasCard extends StatelessWidget {
                                 ],
                               ),
                               const SizedBox(
-                                height: 6,
+                                height: 2,
                               ),
                               Row(
                                 children: [
@@ -164,10 +164,17 @@ class MyReservasCard extends StatelessWidget {
                                     width: 1,
                                     color: Colors.grey,
                                   ),
-                                  const SizedBox(width: 8),
-                                  Text('\$ ${cancha.price}',
+                                  const SizedBox(width: 4),
+                                  Text('\$${cancha.price}',
                                       style: const TextStyle(
                                           color: Colors.black, fontSize: 16)),
+                                  IconButton(
+                                      onPressed: () async {
+                                        await getCanchasResevered
+                                            .deleteCancha(cancha.id);
+                                      },
+                                      icon: const Icon(Icons.delete,
+                                          color: Colors.black))
                                 ],
                               ),
                             ],
