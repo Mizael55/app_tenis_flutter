@@ -6,7 +6,8 @@
         "image": "assets/img/Enmascarargrupo2.jpg",
         "price": "25",
         "available": true,
-        "schedule": "7:00 am - 5:00 pm"
+        "starthour": "7:00 am",
+        "endhour": "5:00 pm"
     },
     {
         "id": 2,
@@ -15,7 +16,8 @@
         "image": "assets/img/Enmascarargrupo.jpg",
         "price": "50",
         "available": true,
-        "schedule": "9:00 am - 6:00 pm"
+       "starthour": "9:00 am",
+        "endhour": "6:00 pm"
     },
     {
         "id": 3,
@@ -24,6 +26,7 @@
         "image": "assets/img/Enmascarargrupo1.jpg",
         "price": "100",
         "available": true,
-        "schedule": "1:00 pm - 10:00 pm"
+        "starthour": "1:00 pm",
+        "endhour": "10:00 pm"
     }
 ]

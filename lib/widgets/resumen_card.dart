@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 import '../models/models.dart';
+import '../providers/providers.dart';
 
 class ResumeCard extends StatelessWidget {
   const ResumeCard({super.key, required this.reserveDetailsCanchaSelected});
@@ -8,6 +9,7 @@ class ResumeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final canchaFormProvider = Provider.of<CanchaFormProvider>(context);
     final Size size = MediaQuery.of(context).size;
     return Container(
         width: size.width,
@@ -41,29 +43,30 @@ class ResumeCard extends StatelessWidget {
                     children: [
                       const Icon(Icons.calendar_today_outlined, size: 20),
                       const SizedBox(width: 5),
-                      Text(DateTime.now().toString().substring(0, 10),
+                      Text(canchaFormProvider.fecha.toString(),
                           style: const TextStyle(fontSize: 15)),
                     ],
                   ),
                 ],
               ),
               const SizedBox(height: 10),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.person_2_outlined, size: 20),
-                      SizedBox(width: 5),
-                      Text('Instructor: Mark Gonzales',
-                          style: TextStyle(fontSize: 15)),
+                      const Icon(Icons.person_2_outlined, size: 20),
+                      const SizedBox(width: 5),
+                      Text('Instructor: ${canchaFormProvider.instructor}',
+                          style: const TextStyle(fontSize: 15)),
                     ],
                   ),
                   Row(
                     children: [
-                      Icon(Icons.access_time, size: 20),
-                      SizedBox(width: 5),
-                      Text('2 horas', style: TextStyle(fontSize: 15)),
+                      const Icon(Icons.access_time, size: 20),
+                      const SizedBox(width: 5),
+                      Text(' ${canchaFormProvider.horas} horas',
+                          style: const TextStyle(fontSize: 15)),
                     ],
                   ),
                 ],

@@ -5,7 +5,8 @@ class CanchasModels {
   String image;
   String price;
   bool available;
-  String schedule;
+  String starthour;
+  String endhour;
 
   CanchasModels({
     this.id,
@@ -14,7 +15,8 @@ class CanchasModels {
     required this.image,
     required this.price,
     required this.available,
-    required this.schedule,
+    required this.starthour,
+    required this.endhour,
   });
 
   factory CanchasModels.fromJson(Map<String, dynamic> json) => CanchasModels(
@@ -24,7 +26,8 @@ class CanchasModels {
         image: json["image"],
         price: json["price"],
         available: json["available"],
-        schedule: json["schedule"],
+        starthour: json["starthour"],
+        endhour: json["endhour"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -34,11 +37,12 @@ class CanchasModels {
         "image": image,
         "price": price,
         "available": available,
-        "schedule": schedule,
+        "starthour": starthour,
+        "endhour": endhour,
       };
 
   @override
   String toString() {
-    return 'CanchasModels{id: $id, title: $title, type: $type, image: $image, price: $price, available: $available, schedule: $schedule}';
+    return 'CanchasModels{id: $id, title: $title, type: $type, image: $image, price: $price, available: $available, starthour: $starthour, endhour: $endhour}';
   }
 }

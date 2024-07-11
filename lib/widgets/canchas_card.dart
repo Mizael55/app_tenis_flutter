@@ -136,7 +136,7 @@ class CanchasCard extends StatelessWidget {
                               ),
                               const SizedBox(width: 4),
                               Flexible(
-                                child: Text(cancha.schedule,
+                                child: Text('${cancha.starthour} - ${cancha.endhour}',
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 1,
                                     style: const TextStyle(

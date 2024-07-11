@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import '../models/models.dart';
+import '../providers/providers.dart';
 import '../screens/screens.dart';
 
 class SelectingScheduleAndBottom extends StatefulWidget {
@@ -57,6 +59,7 @@ class _SelectingScheduleAndBottomState
 
   @override
   Widget build(BuildContext context) {
+    final canchaFormProvider = Provider.of<CanchaFormProvider>(context);
     final Size size = MediaQuery.of(context).size;
     return Container(
       color: Colors.blue[50],
@@ -91,10 +94,13 @@ class _SelectingScheduleAndBottomState
                       ? 'Fecha'
                       : DateFormat('yyyy-MM-dd').format(selectedDate!)),
                   IconButton(
-                    icon:
-                        const Icon(Icons.keyboard_arrow_down_rounded, size: 25),
-                    onPressed: () => _selectDate(context),
-                  ),
+                      icon: const Icon(Icons.keyboard_arrow_down_rounded,
+                          size: 25),
+                      onPressed: () async{
+                      await  _selectDate(context);
+                        canchaFormProvider.fecha =
+                            DateFormat('yyyy-MM-dd').format(selectedDate!);
+                      }),
                 ],
               ),
             ),
@@ -119,11 +125,13 @@ class _SelectingScheduleAndBottomState
                           ? 'Hora de inicio'
                           : startTime!.format(context)),
                       IconButton(
-                        icon: const Icon(Icons.keyboard_arrow_down_rounded,
-                            size: 25),
-                        onPressed: () =>
-                            _selectTime(context, isStartTime: true),
-                      ),
+                          icon: const Icon(Icons.keyboard_arrow_down_rounded,
+                              size: 25),
+                          onPressed: ()async {
+                           await _selectTime(context, isStartTime: true);
+                            canchaFormProvider.horaInicio =
+                                startTime!.format(context);
+                          }),
                     ],
                   ),
                 ),
@@ -145,11 +153,13 @@ class _SelectingScheduleAndBottomState
                           ? 'Hora de fin'
                           : endTime!.format(context)),
                       IconButton(
-                        icon: const Icon(Icons.keyboard_arrow_down_rounded,
-                            size: 25),
-                        onPressed: () =>
-                            _selectTime(context, isStartTime: false),
-                      ),
+                          icon: const Icon(Icons.keyboard_arrow_down_rounded,
+                              size: 25),
+                          onPressed: () async{
+                          await  _selectTime(context, isStartTime: false);
+                            canchaFormProvider.horaFin =
+                                endTime!.format(context);
+                          }),
                     ],
                   ),
                 ),
@@ -160,29 +170,44 @@ class _SelectingScheduleAndBottomState
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             const SizedBox(height: 20),
             Container(
-                height: 100, // Establece la altura deseada
-                child: TextField(
-                    autofocus: false,
-                    keyboardType: TextInputType.multiline,
-                    maxLines: 4, // Ajusta esto según tus necesidades
-                    decoration: InputDecoration(
-                        hintText: "Agrega un comentario...",
-                        filled: true, // Habilita el relleno de color
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Colors.white, width: 2),
-                          borderRadius: BorderRadius.circular(8),
-                        )
-                        // remueve el focus
-
-                        ))),
+              height: 100,
+              child: TextField(
+                autofocus: false,
+                keyboardType: TextInputType.multiline,
+                maxLines: 4,
+                onChanged: (value) {
+                  canchaFormProvider.comment = value;
+                },
+                decoration: InputDecoration(
+                    hintText: "Agrega un comentario...",
+                    filled: true, // Habilita el relleno de color
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(color: Colors.white, width: 2),
+                      borderRadius: BorderRadius.circular(8),
+                    )),
+              ),
+            ),
             const SizedBox(height: 30),
             GestureDetector(
               onTap: () {
+
+                if (canchaFormProvider.fecha.isEmpty ||
+                    canchaFormProvider.horaInicio.isEmpty ||
+                    canchaFormProvider.horaFin.isEmpty ||
+                    canchaFormProvider.instructor.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Por favor, complete los campos'),
+                    ),
+                  );
+                  return;
+                }
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(

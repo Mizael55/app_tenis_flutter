@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
+import '../models/models.dart';
 
 class DBProvider {
 
@@ -32,71 +33,37 @@ class DBProvider {
       onOpen: (db) {},
       onCreate: (Database db, int version) async {
         await db.execute('''
-          CREATE TABLE Scans(
+          CREATE TABLE Tennis(
             id INTEGER PRIMARY KEY,
             title TEXT,
-            type TEXT
-            image TEXT
-            price TEXT
-            available BOOLEAN
-            schedule TEXT
+            type TEXT,
+            image TEXT,
+            price TEXT,
+            starthour TEXT,
+            endhour TEXT,
+            total INTEGER,
+            date TEXT,
+            comment TEXT,
+            renter TEXT,
+            instructor TEXT
           )
         ''');
       },
     );
   }
 
-  // Future<int>nuevoScanRaw(ScanModel nuevoScan) async {
-  //   final db = await database;
-  //   final res = await db!.rawInsert('''
-  //     INSERT INTO Scans(id, type, value)
-  //     VALUES(${nuevoScan.id}, '${nuevoScan.type}', '${nuevoScan.value}')
-  //   ''');
-  //   return res;
-  // }
+  
+  Future<int>newCancha(AddCanchasModel newCancha) async {
+    final db = await database;
+    final res = await db!.insert('Tennis', newCancha.toJson());
+    // print(res);
+    // Es el ID del último registro insertado
+    return res;
+  }
 
-  // Future<int>nuevoScan(ScanModel nuevoScan) async {
-  //   final db = await database;
-  //   final res = await db!.insert('Scans', nuevoScan.toJson());
-  //   // print(res);
-
-  //   // Es el ID del último registro insertado
-  //   return res;
-  // }
-
-  // Future<ScanModel?> getScanById(int id) async {
-  //   final db = await database;
-  //   final res = await db!.query('Scans', where: 'id = ?', whereArgs: [id]);
-  //   return res.isNotEmpty ? ScanModel.fromJson(res.first) : null;
-  // }
-
-  // Future<List<ScanModel>> getTodosLosScans() async {
-  //   final db = await database;
-  //   final res = await db!.query('Scans');
-  //   return res.isNotEmpty ? res.map((s) => ScanModel.fromJson(s)).toList() : [];
-  // }
-
-  // Future<List<ScanModel>> getScansPorTipo(String tipo) async {
-  //   final db = await database;
-  //   final res = await db!.query('Scans', where: 'type = ?', whereArgs: [tipo]);
-  //   return res.isNotEmpty ? res.map((s) => ScanModel.fromJson(s)).toList() : [];
-  // }
-
-  // Future<int> updateScan(ScanModel nuevoScan) async {
-  //   final db = await database;
-  //   final res = await db!.update('Scans', nuevoScan.toJson(), where: 'id = ?', whereArgs: [nuevoScan.id]);
-  //   return res;
-  // }
-
-  // Future<int> deleteScan(int id) async {
-  //   final db = await database;
-  //   final res = await db!.delete('Scans', where: 'id = ?', whereArgs: [id]);
-  //   return res;
-  // }
-
-  // Future<int> deleteAll() async {
-  //   final db = await database;
-  //   final res = await db!.delete('Scans');
-  //   return res;
-  // }
+  Future<List<AddCanchasModel>> getAllCanchasRentered() async {
+    final db = await database;
+    final res = await db!.query('Tennis');
+    return res.isNotEmpty ? res.map((s) => AddCanchasModel.fromJson(s)).toList() : [];
+  }
 }

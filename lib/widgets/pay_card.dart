@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../models/models.dart';
+import '../providers/providers.dart';
+import '../screens/screens.dart';
 
 class PayCard extends StatelessWidget {
-  const PayCard({super.key});
+  const PayCard({super.key, required this.reserveDetailsCanchaSelected});
+  final CanchasModels reserveDetailsCanchaSelected;
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    final canchaFormProvider = Provider.of<CanchaFormProvider>(context);
+    final addCanchaToDB = Provider.of<CanchasProvider>(context);
+    final originPrice = reserveDetailsCanchaSelected.price;
+    final total = int.parse(originPrice) * canchaFormProvider.horas;
+    final totalString = total.toString();
+
     return Container(
-      color: Colors.white,
+        color: Colors.white,
         margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         width: size.width,
         height: size.height * 0.3 + 50,
@@ -20,14 +31,15 @@ class PayCard extends StatelessWidget {
                     style: TextStyle(color: Colors.black, fontSize: 20)),
                 Column(
                   children: [
-                    Text('\$50',
+                    Text('\$ $totalString',
                         style: TextStyle(
                           color: Colors.blue[900],
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         )),
-                    const Text('por 2 horas',
-                        style: TextStyle(color: Colors.black, fontSize: 14)),
+                    Text('${canchaFormProvider.horas} horas',
+                        style:
+                            const TextStyle(color: Colors.black, fontSize: 14)),
                   ],
                 )
               ],
@@ -52,13 +64,29 @@ class PayCard extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => const InitSessionScreen(),
-                //   ),
-                // );
+              onTap: () async {
+                await addCanchaToDB.newCancha(
+                  AddCanchasModel(
+                    title: reserveDetailsCanchaSelected.title,
+                    type: reserveDetailsCanchaSelected.type,
+                    image: reserveDetailsCanchaSelected.image,
+                    price: reserveDetailsCanchaSelected.price,
+                    starthour: reserveDetailsCanchaSelected.starthour,
+                    endhour: reserveDetailsCanchaSelected.endhour,
+                    total: canchaFormProvider.horas,
+                    date: canchaFormProvider.fecha.toString(),
+                    comment: canchaFormProvider.comment,
+                    renter: 'Carlos',
+                    instructor: canchaFormProvider.instructor,
+                  ),
+                );
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomeScreen(),
+                  ),
+                );
               },
               child: Container(
                 width: size.width,

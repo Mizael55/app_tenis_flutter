@@ -73,7 +73,7 @@ class ResumeScreen extends StatelessWidget {
                       reserveDetails: true, reserveDetailsCanchaSelected: canchaDetails,
                     ),
                     ResumeCard(reserveDetailsCanchaSelected: canchaDetails,),
-                    PayCard()
+                    PayCard(reserveDetailsCanchaSelected: canchaDetails,)
                   ],
                 ),
               ),
