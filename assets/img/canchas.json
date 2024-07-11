@@ -15,7 +15,7 @@
         "type": "Cancha tipo B",
         "image": "assets/img/Enmascarargrupo.jpg",
         "price": "50",
-        "available": true,
+        "available": false,
        "starthour": "9:00 am",
         "endhour": "6:00 pm"
     },
