@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../db/db.dart';
@@ -23,6 +22,7 @@ class CanchasProvider extends ChangeNotifier {
 
   loadAllCanchaRentered() async {
     final canchas = await DBProvider.db.getAllCanchasRentered();
+    canchas.sort((a, b) => a.date.compareTo(b.date));
     canchasRentered = [...canchas];
     notifyListeners();
   }
@@ -42,5 +42,4 @@ class CanchasProvider extends ChangeNotifier {
     });
     notifyListeners();
   }
-
 }

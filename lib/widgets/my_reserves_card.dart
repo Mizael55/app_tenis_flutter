@@ -155,7 +155,7 @@ class MyReservasCard extends StatelessWidget {
                                     size: 20,
                                   ),
                                   const SizedBox(width: 8),
-                                  Text(cancha.horas,
+                                  Text('${cancha.horas} horas',
                                       style: const TextStyle(
                                           color: Colors.black, fontSize: 16)),
                                   Container(

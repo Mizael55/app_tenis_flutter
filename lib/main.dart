@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => HandleRouteProvider()),
         ChangeNotifierProvider(create: (context) => CanchasProvider()),
         ChangeNotifierProvider(create: (context) => CanchaFormProvider()),
+        ChangeNotifierProvider(create: (context) => UserProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

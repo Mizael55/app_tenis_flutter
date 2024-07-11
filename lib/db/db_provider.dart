@@ -1,4 +1,3 @@
-
 import 'dart:io';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -6,7 +5,6 @@ import 'package:sqflite/sqflite.dart';
 import '../models/models.dart';
 
 class DBProvider {
-
   static Database? _database;
   static final DBProvider db = DBProvider._();
 
@@ -48,12 +46,38 @@ class DBProvider {
             horas TEXT
           )
         ''');
+
+        await db.execute('''
+          CREATE TABLE User(
+            id INTEGER PRIMARY KEY,
+            name TEXT,
+            email TEXT,
+            telephone TEXT,
+            password TEXT,
+            confirmPassword TEXT
+          )
+        ''');
       },
     );
   }
 
-  
-  Future<int>newCancha(AddCanchasModel newCancha) async {
+  Future<int> newUser(UserModel newUser) async {
+    final db = await database;
+    final res = await db!.insert('User', newUser.toJson());
+    // print(res);
+    // Es el ID del último registro insertado
+    return res;
+  }
+
+  // get user by email and password
+  Future getUser(String email, String password) async {
+    final db = await database;
+    final res = await db!.query('User',
+        where: 'email = ? and password = ?', whereArgs: [email, password]);
+    return res.isNotEmpty ? UserModel.fromJson(res.first) : null;
+  }
+
+  Future<int> newCancha(AddCanchasModel newCancha) async {
     final db = await database;
     final res = await db!.insert('Tennis', newCancha.toJson());
     // print(res);
@@ -64,7 +88,9 @@ class DBProvider {
   Future<List<AddCanchasModel>> getAllCanchasRentered() async {
     final db = await database;
     final res = await db!.query('Tennis');
-    return res.isNotEmpty ? res.map((s) => AddCanchasModel.fromJson(s)).toList() : [];
+    return res.isNotEmpty
+        ? res.map((s) => AddCanchasModel.fromJson(s)).toList()
+        : [];
   }
 
   Future<int> deleteCancha(int id) async {
