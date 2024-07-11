@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../db/db.dart';
 import 'screens.dart';
 
 class InitOrRegisterSessionScreen extends StatelessWidget {
@@ -6,6 +7,7 @@ class InitOrRegisterSessionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DBProvider.db.database;
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(

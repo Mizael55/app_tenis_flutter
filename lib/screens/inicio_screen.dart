@@ -9,6 +9,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final getCanchasList = Provider.of<CanchasProvider>(context).canchas;
+    final userName = Provider.of<UserProvider>(context, listen: false).userDetails;
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
@@ -23,9 +24,9 @@ class HomeScreen extends StatelessWidget {
               width: size.width,
               height: size.height * 0.1,
               padding: const EdgeInsets.only(top: 20, left: 20),
-              child: const Text(
-                'Hola Andrea!',
-                style: TextStyle(
+              child:  Text(
+                'Hola $userName!',
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 30,
                   fontWeight: FontWeight.bold,

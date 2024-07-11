@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../db/db.dart';
 import '../providers/providers.dart';
 import '../screens/screens.dart';
 
@@ -12,7 +11,7 @@ class SelectScreenRoute extends StatelessWidget {
     final handleRouteProvider = Provider.of<HandleRouteProvider>(context);
     final getCanchasList = Provider.of<CanchasProvider>(context, listen: false);
     final currentIndex = handleRouteProvider.selectedMenuOpt;
-    DBProvider.db.database;
+    
 
     switch (currentIndex) {
       case 0:

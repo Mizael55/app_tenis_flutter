@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import '../models/models.dart';
 import '../providers/providers.dart';
 import '../routes/route_bottom_navigation.dart';
-import '../screens/screens.dart';
 
 class PayCard extends StatelessWidget {
   const PayCard({super.key, required this.reserveDetailsCanchaSelected});
@@ -12,6 +11,8 @@ class PayCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    final userName =
+        Provider.of<UserProvider>(context, listen: false).userDetails;
     final canchaFormProvider = Provider.of<CanchaFormProvider>(context);
     final addCanchaToDB = Provider.of<CanchasProvider>(context);
     final originPrice = reserveDetailsCanchaSelected.price;
@@ -77,7 +78,7 @@ class PayCard extends StatelessWidget {
                     endhour: reserveDetailsCanchaSelected.endhour,
                     date: canchaFormProvider.fecha.toString(),
                     comment: canchaFormProvider.comment,
-                    renter: 'Carlos',
+                    renter: userName!,
                     instructor: canchaFormProvider.instructor,
                   ),
                 );
