@@ -16,6 +16,8 @@ class SelectScreenRoute extends StatelessWidget {
         return const HomeScreen();
       case 1:
         return const ReservesDoneScreen();
+      case 2:
+        return const FavoriteScreen();
       default:
         return const HomeScreen();
     }

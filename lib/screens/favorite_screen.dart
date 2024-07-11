@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../widgets/widgets.dart';
 
-class ReservesDoneScreen extends StatelessWidget {
-  const ReservesDoneScreen({super.key});
+class FavoriteScreen extends StatelessWidget {
+  const FavoriteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class ReservesDoneScreen extends StatelessWidget {
         child: AppBarMenu(),
       ),
       body: Center(
-        child: Text('ReservesDoneScreen'),
+        child: Text('FavoriteScreen'),
       ),
       bottomNavigationBar: BottomNavigation(),
     );
