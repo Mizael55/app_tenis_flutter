@@ -23,7 +23,7 @@ class DBProvider {
     // path de donde almacenaremos la base de datos
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     final path = join(documentsDirectory.path, 'tennis.db');
-    print(path);
+    // print(path);
 
     // Crear base de datos
     return await openDatabase(
@@ -34,8 +34,12 @@ class DBProvider {
         await db.execute('''
           CREATE TABLE Scans(
             id INTEGER PRIMARY KEY,
-            type TEXT,
-            value TEXT
+            title TEXT,
+            type TEXT
+            image TEXT
+            price TEXT
+            available BOOLEAN
+            schedule TEXT
           )
         ''');
       },

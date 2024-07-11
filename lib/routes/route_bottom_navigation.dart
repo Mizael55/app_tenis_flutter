@@ -10,11 +10,12 @@ class SelectScreenRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final handleRouteProvider = Provider.of<HandleRouteProvider>(context);
+    final getCanchasList = Provider.of<CanchasProvider>(context, listen: false);
     final currentIndex = handleRouteProvider.selectedMenuOpt;
-    DBProvider.db.database;
-
+    // DBProvider.db.database;
     switch (currentIndex) {
       case 0:
+        getCanchasList.getCanchasJson();
         return const HomeScreen();
       case 1:
         return const ReservesDoneScreen();

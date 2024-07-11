@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => HandleRouteProvider()),
+        ChangeNotifierProvider(create: (context) => CanchasProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

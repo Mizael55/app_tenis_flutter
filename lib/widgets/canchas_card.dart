@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/providers.dart';
 import '../screens/screens.dart';
 
 class CanchasCard extends StatelessWidget {
@@ -8,11 +10,7 @@ class CanchasCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final img = [
-      'assets/img/Enmascarargrupo2.jpg',
-      'assets/img/Enmascarargrupo.jpg',
-      'assets/img/Enmascarargrupo1.jpg',
-    ];
+    final getCanchasList = Provider.of<CanchasProvider>(context).canchas;
     final size = MediaQuery.of(context).size;
     return SizedBox(
       width: size.width,
@@ -39,8 +37,9 @@ class CanchasCard extends StatelessWidget {
               margin: const EdgeInsets.only(top: 16),
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 3,
+                itemCount: getCanchasList.length,
                 itemBuilder: (context, index) {
+                  final cancha = getCanchasList[index];
                   return Container(
                     width: size.width * 0.7,
                     height: size.height * 0.3,
@@ -57,7 +56,7 @@ class CanchasCard extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             image: DecorationImage(
-                              image: AssetImage(img[index]),
+                              image: AssetImage(cancha.image),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -67,9 +66,11 @@ class CanchasCard extends StatelessWidget {
                               left: 10, right: 10, top: 10),
                           child: Row(
                             children: [
-                              const Text(
-                                'Epic Box',
-                                style: TextStyle(
+                               Text(
+                                cancha.title,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 24,
                                 ),
@@ -97,47 +98,48 @@ class CanchasCard extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 10),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 10),
+                         Padding(
+                          padding: const EdgeInsets.only(left: 10),
                           child: Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.calendar_today,
                                 color: Colors.black,
                                 size: 20,
                               ),
-                              SizedBox(width: 8),
-                              Text('9 de julio 2024',
-                                  style: TextStyle(
+                              const SizedBox(width: 8),
+                              Text(DateTime.now().toString().substring(0, 10),
+                                  style: const TextStyle(
                                       color: Colors.black, fontSize: 16)),
                             ],
                           ),
                         ),
                         const SizedBox(height: 10),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 10),
+                         Padding(
+                          padding: const EdgeInsets.only(left: 10),
                           child: Row(
                             children: [
-                              Text('Disponible',
-                                  style: TextStyle(
+                              Text(
+                                cancha.available ? 'Disponible' : 'No disponible',
+                                  style: const TextStyle(
                                       color: Colors.black, fontSize: 16)),
-                              SizedBox(width: 2),
-                              CircleAvatar(
+                              const SizedBox(width: 2),
+                              const CircleAvatar(
                                 radius: 5,
                                 backgroundColor: Colors.blue,
                               ),
-                              SizedBox(width: 2),
-                              Icon(
+                              const SizedBox(width: 2),
+                              const Icon(
                                 Icons.access_time,
                                 color: Colors.black,
                                 size: 20,
                               ),
-                              SizedBox(width: 4),
+                              const SizedBox(width: 4),
                               Flexible(
-                                child: Text('7:00 am - 4:00 pm',
+                                child: Text(cancha.schedule,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 1,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.black, fontSize: 16)),
                               ),
                             ],
