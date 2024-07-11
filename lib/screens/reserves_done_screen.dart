@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/providers.dart';
 import '../widgets/widgets.dart';
 
 class ReservesDoneScreen extends StatelessWidget {
@@ -6,12 +8,7 @@ class ReservesDoneScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final img = [
-      'assets/img/Enmascarargrupo2.jpg',
-      'assets/img/Enmascarargrupo.jpg',
-      'assets/img/Enmascarargrupo1.jpg',
-      'assets/img/Enmascarargrupo1.jpg',
-    ];
+    final getCanchasResevered = Provider.of<CanchasProvider>(context);
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
@@ -57,7 +54,12 @@ class ReservesDoneScreen extends StatelessWidget {
             child: Text('Mis Reservas',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           ),
-          MyReservasCard(size: size, img: img)
+          getCanchasResevered.canchasRenteredList.isEmpty
+              ? const Center(
+                  child: Text('No hay reservas programadas',
+                      style: TextStyle(fontSize: 20)),
+                )
+              : const MyReservasCard()
         ],
       ),
       bottomNavigationBar: const BottomNavigation(),

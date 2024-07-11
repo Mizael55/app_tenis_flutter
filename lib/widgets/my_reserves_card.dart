@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/providers.dart';
 
 class MyReservasCard extends StatelessWidget {
   const MyReservasCard({
     super.key,
-    required this.size,
-    required this.img,
   });
-
-  final Size size;
-  final List<String> img;
 
   @override
   Widget build(BuildContext context) {
+    final getCanchasResevered = Provider.of<CanchasProvider>(context);
+    final size = MediaQuery.of(context).size;
     return Expanded(
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: 4,
+        itemCount: getCanchasResevered.canchasRenteredList.length,
         itemBuilder: (context, index) {
+          final cancha = getCanchasResevered.canchasRenteredList[index];
           return Container(
               width: size.width,
-              margin:
-                  const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+              margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: Colors.grey, width: 1),
@@ -48,7 +47,7 @@ class MyReservasCard extends StatelessWidget {
                                 left: 20, right: 10, bottom: 20, top: 25),
                             child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(img[index],
+                                child: Image.asset(cancha.image,
                                     fit: BoxFit.cover)),
                           ),
                         ),
@@ -71,8 +70,8 @@ class MyReservasCard extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  const Text('Epic Box',
-                                      style: TextStyle(
+                                  Text(cancha.title,
+                                      style: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 24,
                                         fontWeight: FontWeight.bold,
@@ -103,40 +102,38 @@ class MyReservasCard extends StatelessWidget {
                               const SizedBox(
                                 height: 6,
                               ),
-                              const Row(
+                              Row(
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.calendar_today,
                                     color: Colors.black,
                                     size: 20,
                                   ),
-                                  SizedBox(width: 8),
-                                  Text('9 de julio 2024',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 16)),
+                                  const SizedBox(width: 8),
+                                  Text(cancha.date,
+                                      style: const TextStyle(
+                                          color: Colors.black, fontSize: 16)),
                                 ],
                               ),
                               const SizedBox(
                                 height: 6,
                               ),
-                              const Row(
+                              Row(
                                 children: [
-                                  Text('Reservado por:',
+                                  const Text('Reservado por:',
                                       style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 16)),
-                                  SizedBox(width: 6),
-                                  CircleAvatar(
+                                          color: Colors.black, fontSize: 16)),
+                                  const SizedBox(width: 6),
+                                  const CircleAvatar(
                                     radius: 10,
-                                    backgroundImage: AssetImage(
-                                        'assets/img/elipse.jpg'),
+                                    backgroundImage:
+                                        AssetImage('assets/img/elipse.jpg'),
                                   ),
-                                  SizedBox(width: 6),
+                                  const SizedBox(width: 6),
                                   Flexible(
                                     child: Text(
-                                      'Andrea Gomez',
-                                      style: TextStyle(
+                                      cancha.renter,
+                                      style: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 16,
                                       ),
@@ -158,25 +155,19 @@ class MyReservasCard extends StatelessWidget {
                                     size: 20,
                                   ),
                                   const SizedBox(width: 8),
-                                  const Text('2 horas',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 16)),
+                                  Text(cancha.horas,
+                                      style: const TextStyle(
+                                          color: Colors.black, fontSize: 16)),
                                   Container(
-                                    margin:
-                                        const EdgeInsets.only(left: 10),
-                                    height:
-                                        20, // Ajusta la altura según necesites
-                                    width:
-                                        1, // Ajusta el ancho para el grosor del divisor
-                                    color:
-                                        Colors.grey, // Color del divisor
+                                    margin: const EdgeInsets.only(left: 10),
+                                    height: 20,
+                                    width: 1,
+                                    color: Colors.grey,
                                   ),
                                   const SizedBox(width: 8),
-                                  const Text('\$200',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 16)),
+                                  Text('\$ ${cancha.price}',
+                                      style: const TextStyle(
+                                          color: Colors.black, fontSize: 16)),
                                 ],
                               ),
                             ],
