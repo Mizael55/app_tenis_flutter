@@ -25,7 +25,7 @@ class ResumeScreen extends StatelessWidget {
                   right: 0,
                   bottom: 0,
                   child: Image.asset(
-                    'assets/img/Enmascarargrupo2.jpg',
+                    canchaDetails.image,
                     fit: BoxFit.cover,
                   ),
                 ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import '../models/models.dart';
 import '../widgets/widgets.dart';
 
@@ -13,13 +12,6 @@ class ReserveScreen extends StatefulWidget {
 }
 
 class _ReserveScreenState extends State<ReserveScreen> {
-  int _currentIndex = 0;
-  final List<String> imgList = [
-    'assets/img/Enmascarargrupo2.jpg',
-    'assets/img/Enmascarargrupo.jpg',
-    'assets/img/Enmascarargrupo1.jpg',
-  ];
-
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -31,23 +23,17 @@ class _ReserveScreenState extends State<ReserveScreen> {
             height: size.height * 0.3,
             child: Stack(
               children: [
-                CarouselSlider(
-                  options: CarouselOptions(
-                      height: MediaQuery.of(context).size.height,
-                      viewportFraction: 1.0,
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          _currentIndex = index;
-                        });
-                      }),
-                  items: imgList
-                      .map((item) => Image.asset(
-                            item,
-                            fit: BoxFit.cover,
-                            width: MediaQuery.of(context).size.width,
-                          ))
-                      .toList(),
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: Image.asset(
+                    widget.canchaDetails.image,
+                    fit: BoxFit.cover,
+                  ),
                 ),
+
                 Positioned(
                   top: 50,
                   left: 20,
@@ -78,34 +64,6 @@ class _ReserveScreenState extends State<ReserveScreen> {
                     onPressed: () {},
                   ),
                 ),
-                Positioned(
-                  bottom: 20,
-                  left: 0,
-                  right: 0,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: imgList.asMap().entries.map((entry) {
-                      return GestureDetector(
-                        onTap: () =>
-                            _carouselController.animateToPage(entry.key),
-                        child: Container(
-                          width: 12.0,
-                          height: 12.0,
-                          margin: const EdgeInsets.symmetric(
-                              vertical: 8.0, horizontal: 4.0),
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: (Theme.of(context).brightness ==
-                                          Brightness.dark
-                                      ? Colors.white
-                                      : Colors.black)
-                                  .withOpacity(
-                                      _currentIndex == entry.key ? 0.9 : 0.4)),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                ),
               ],
             ),
           ),
@@ -131,6 +89,4 @@ class _ReserveScreenState extends State<ReserveScreen> {
       ),
     );
   }
-
-  final CarouselController _carouselController = CarouselController();
 }
