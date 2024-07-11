@@ -3,7 +3,8 @@ import 'package:provider/provider.dart';
 import 'providers/providers.dart';
 import 'screens/screens.dart';
 
-void main() {
+void main(){
+ WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 

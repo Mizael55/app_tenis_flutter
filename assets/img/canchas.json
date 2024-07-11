@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "title": "Epic Box",
+        "tipo": "A",
+        "imagen": "assets/img/Enmascarargrupo2.jpg",
+        "price": "25",
+        "aveilable": true,
+        "schedule": "7:00 am - 5:00 pm"
+    },
+    {
+        "id": 2,
+        "title": "Rusty Tenis",
+        "tipo": "B",
+        "imagen": "assets/img/Enmascarargrupo.jpg",
+        "price": "50",
+        "aveilable": true,
+        "schedule": "9:00 am - 6:00 pm"
+    },
+    {
+        "id": 3,
+        "title": "Cancha multiple",
+        "tipo": "C",
+        "imagen": "assets/img/Enmascarargrupo1.jpg",
+        "price": "100",
+        "aveilable": true,
+        "schedule": "1:00 pm - 10:00 pm"
+    }
+]

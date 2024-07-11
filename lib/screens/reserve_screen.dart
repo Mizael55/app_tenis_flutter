@@ -108,7 +108,7 @@ class _ReserveScreenState extends State<ReserveScreen> {
           ),
           Flexible(
             child: Container(
-              color: Colors.red,
+              color: Colors.white,
               width: size.width,
               height: size.height * 0.7,
               child: const SingleChildScrollView(

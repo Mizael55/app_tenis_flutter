@@ -62,6 +62,7 @@ class ConfirmReserveScreen extends StatelessWidget {
             child: Container(
               width: size.width,
               height: size.height * 0.7,
+              color: Colors.white,
               child: const SingleChildScrollView(
                 child: Column(
                   children: [

@@ -28,7 +28,7 @@ class _ReserveDetailsState extends State<ReserveDetails> {
       width: size.width,
       height: !widget.reserveDetails ? size.height * 0.3 + 6 : size.height * 0.2 + 20,
       child: Padding(
-        padding: const EdgeInsets.only(left: 30, right: 30, top: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,12 +67,12 @@ class _ReserveDetailsState extends State<ReserveDetails> {
                   children: [
                     Text('Disponible',
                         style: TextStyle(color: Colors.black, fontSize: 16)),
-                    SizedBox(width: 4),
+                    SizedBox(width: 2),
                     CircleAvatar(
-                      radius: 6,
+                      radius: 5,
                       backgroundColor: Colors.blue,
                     ),
-                    SizedBox(width: 4),
+                    SizedBox(width: 2),
                     Row(
                       children: [
                         Icon(

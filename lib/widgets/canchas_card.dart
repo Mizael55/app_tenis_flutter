@@ -121,21 +121,25 @@ class CanchasCard extends StatelessWidget {
                               Text('Disponible',
                                   style: TextStyle(
                                       color: Colors.black, fontSize: 16)),
-                              SizedBox(width: 4),
+                              SizedBox(width: 2),
                               CircleAvatar(
                                 radius: 5,
                                 backgroundColor: Colors.blue,
                               ),
-                              SizedBox(width: 4),
+                              SizedBox(width: 2),
                               Icon(
                                 Icons.access_time,
                                 color: Colors.black,
                                 size: 20,
                               ),
                               SizedBox(width: 4),
-                              Text('7:00 am a 4:00 pm',
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 16)),
+                              Flexible(
+                                child: Text('7:00 am - 4:00 pm',
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 16)),
+                              ),
                             ],
                           ),
                         ),

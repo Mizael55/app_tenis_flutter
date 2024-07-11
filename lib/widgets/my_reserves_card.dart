@@ -59,9 +59,8 @@ class MyReservasCard extends StatelessWidget {
                     children: [
                       Container(
                           padding: const EdgeInsets.only(top: 20),
-                          width: size.width * 0.5 + 40,
+                          width: size.width * 0.5 + 30,
                           height: size.height * 0.2,
-                          // color: Colors.red,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                           ),

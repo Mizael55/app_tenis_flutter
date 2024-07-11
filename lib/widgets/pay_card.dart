@@ -7,6 +7,7 @@ class PayCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Container(
+      color: Colors.white,
         margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         width: size.width,
         height: size.height * 0.3 + 50,
