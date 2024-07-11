@@ -247,7 +247,6 @@ class _RegisterSessionScreenState extends State<RegisterSessionScreen> {
                                       confirmPasswordController.text,
                                 ),
                               );
-
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(

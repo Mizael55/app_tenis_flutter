@@ -86,7 +86,6 @@ class _InitSessionScreenState extends State<InitSessionScreen> {
                   const Divider(
                     color: Color.fromARGB(255, 52, 107, 195),
                     height: 4,
-                    // acortala
                     endIndent: 280,
                     thickness: 2,
                   ),
@@ -108,22 +107,7 @@ class _InitSessionScreenState extends State<InitSessionScreen> {
                               }
                               return null;
                             },
-                            decoration: const InputDecoration(
-                              labelText: 'Email',
-                              labelStyle: TextStyle(
-                                color: Colors.black,
-                              ),
-                              prefixIcon: Icon(
-                                Icons.email_outlined,
-                                color: Colors.black,
-                              ),
-                              hintText: 'usuario@gmail.com',
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
+                            decoration: decorationBoxInputEmail(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -139,26 +123,7 @@ class _InitSessionScreenState extends State<InitSessionScreen> {
                               }
                               return null;
                             },
-                            decoration: const InputDecoration(
-                              labelText: 'Contraseña',
-                              labelStyle: TextStyle(
-                                color: Colors.black,
-                              ),
-                              prefixIcon: Icon(
-                                Icons.lock_outline_rounded,
-                                color: Colors.black,
-                              ),
-                              suffixIcon: Icon(
-                                Icons.visibility_off_outlined,
-                                color: Colors.black,
-                              ),
-                              hintText: '**********',
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
+                            decoration: decorationBoxInputPassword(),
                           ),
                           Row(
                             children: [
@@ -280,6 +245,48 @@ class _InitSessionScreenState extends State<InitSessionScreen> {
           ),
         )
       ]),
+    );
+  }
+
+  InputDecoration decorationBoxInputEmail() {
+    return const InputDecoration(
+      labelText: 'Email',
+      labelStyle: TextStyle(
+        color: Colors.black,
+      ),
+      prefixIcon: Icon(
+        Icons.email_outlined,
+        color: Colors.black,
+      ),
+      hintText: 'usuario@gmail.com',
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.black,
+        ),
+      ),
+    );
+  }
+
+  InputDecoration decorationBoxInputPassword() {
+    return const InputDecoration(
+      labelText: 'Contraseña',
+      labelStyle: TextStyle(
+        color: Colors.black,
+      ),
+      prefixIcon: Icon(
+        Icons.lock_outline_rounded,
+        color: Colors.black,
+      ),
+      suffixIcon: Icon(
+        Icons.visibility_off_outlined,
+        color: Colors.black,
+      ),
+      hintText: '**********',
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.black,
+        ),
+      ),
     );
   }
 }
