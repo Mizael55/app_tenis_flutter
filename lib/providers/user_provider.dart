@@ -11,9 +11,12 @@ class UserProvider extends ChangeNotifier {
     return user;
   }
 
-  Future<UserModel> loadUser(String email, String password) async {
+  Future<UserModel?> loadUser(String email, String password) async {
     final user = await DBProvider.db.getUser(email, password);
-    notifyListeners();
-    return user;
+    if (user != null) {
+      notifyListeners();
+      return user;
+    }
+    return null;
   }
 }
