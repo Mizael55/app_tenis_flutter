@@ -41,11 +41,11 @@ class DBProvider {
             price TEXT,
             starthour TEXT,
             endhour TEXT,
-            total INTEGER,
             date TEXT,
             comment TEXT,
             renter TEXT,
-            instructor TEXT
+            instructor TEXT,
+            horas TEXT
           )
         ''');
       },

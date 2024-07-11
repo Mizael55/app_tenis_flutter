@@ -6,11 +6,11 @@ class AddCanchasModel {
   String price;
   String starthour;
   String endhour;
-  int total;
   String date;
   String? comment;
   String renter;
   String instructor;
+  String? horas;
 
   AddCanchasModel({
     this.id,
@@ -20,11 +20,11 @@ class AddCanchasModel {
     required this.price,
     required this.starthour,
     required this.endhour,
-    required this.total,
     required this.date,
     this.comment,
     required this.renter,
     required this.instructor,
+    this.horas,
   });
 
   factory AddCanchasModel.fromJson(Map<String, dynamic> json) => AddCanchasModel(
@@ -35,11 +35,11 @@ class AddCanchasModel {
         price: json["price"],
         starthour: json["starthour"],
         endhour: json["endhour"],
-        total: json["total"],
         date: json["date"],
         comment: json["comment"],
         renter: json["renter"],
         instructor: json["instructor"],
+        horas: json["horas"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -50,15 +50,15 @@ class AddCanchasModel {
         "price": price,
         "starthour": starthour,
         "endhour": endhour,
-        "total": total,
         "date": date,
         "comment": comment,
         "renter": renter,
         "instructor": instructor,
+        "horas": horas,
       };
 
   @override
   String toString() {
-    return 'CanchasModels{id: $id, title: $title, type: $type, image: $image, price: $price, starthour: $starthour, endhour: $endhour, total: $total, date: $date, comment: $comment, renter: $renter, instructor: $instructor}';
+    return 'CanchasModels{id: $id, title: $title, type: $type, image: $image, price: $price, starthour: $starthour, endhour: $endhour, date: $date, comment: $comment, renter: $renter, instructor: $instructor, horas: $horas}';
   }
 }

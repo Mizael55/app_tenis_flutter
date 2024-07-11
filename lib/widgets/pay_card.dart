@@ -70,10 +70,10 @@ class PayCard extends StatelessWidget {
                     title: reserveDetailsCanchaSelected.title,
                     type: reserveDetailsCanchaSelected.type,
                     image: reserveDetailsCanchaSelected.image,
-                    price: reserveDetailsCanchaSelected.price,
+                    price: totalString,
+                    horas: canchaFormProvider.horas.toString(),
                     starthour: reserveDetailsCanchaSelected.starthour,
                     endhour: reserveDetailsCanchaSelected.endhour,
-                    total: canchaFormProvider.horas,
                     date: canchaFormProvider.fecha.toString(),
                     comment: canchaFormProvider.comment,
                     renter: 'Carlos',
@@ -106,12 +106,13 @@ class PayCard extends StatelessWidget {
             const SizedBox(height: 20),
             GestureDetector(
               onTap: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => const InitSessionScreen(),
-                //   ),
-                // );
+                CanchaFormProvider();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomeScreen(),
+                  ),
+                );
               },
               child: Container(
                 width: size.width,

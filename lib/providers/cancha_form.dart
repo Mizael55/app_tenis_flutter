@@ -13,6 +13,18 @@ class CanchaFormProvider extends ChangeNotifier {
   String get instructor => _instructor;
   String get comment => _comment;
 
+  CanchaFormProvider() {
+    reset();
+  }
+
+  void reset() {
+    _fecha = '';
+    _horaInicio = '';
+    _horaFin = '';
+    _instructor = '';
+    _comment = '';
+  }
+
   get horas {
     final horaInicio = int.parse(_horaInicio.split(':')[0]);
     final horaFin = int.parse(_horaFin.split(':')[0]);
