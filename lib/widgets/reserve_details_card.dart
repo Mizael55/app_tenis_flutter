@@ -15,16 +15,16 @@ class ReserveDetails extends StatefulWidget {
 }
 
 class _ReserveDetailsState extends State<ReserveDetails> {
+  final List<String> dropdownItems = [
+      'Agregar Instructor',
+      'Mark Gonzalez',
+    ];
+    
+    String? selectedItem = 'Agregar Instructor';
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    // Paso 1: Define la lista de elementos para el dropdown.
-    final List<String> dropdownItems = [
-      'Agregar Instructor',
-      'Mario Soto',
-    ];
-    // Paso 2: Variable para almacenar el valor seleccionado.
-    String? selectedItem = 'Agregar Instructor';
+    
     return Container(
       color: Colors.white,
       width: size.width,
