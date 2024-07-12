@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../alerts/delete_alert.dart';
 import '../providers/providers.dart';
 
 class MyReservasCard extends StatelessWidget {
@@ -168,13 +169,9 @@ class MyReservasCard extends StatelessWidget {
                                   Text('\$${cancha.price}',
                                       style: const TextStyle(
                                           color: Colors.black, fontSize: 16)),
-                                  IconButton(
-                                      onPressed: () async {
-                                        await getCanchasResevered
-                                            .deleteCancha(cancha.id);
-                                      },
-                                      icon: const Icon(Icons.delete,
-                                          color: Colors.black))
+                                  DeleteBottomAlert(
+                                      getCanchasResevered: getCanchasResevered,
+                                      cancha: cancha)
                                 ],
                               ),
                             ],

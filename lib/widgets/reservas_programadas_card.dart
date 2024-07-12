@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../alerts/delete_alert.dart';
 import '../providers/providers.dart';
 
 class ReservasProgramadasCard extends StatelessWidget {
@@ -119,20 +120,17 @@ class ReservasProgramadasCard extends StatelessWidget {
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         )),
-                                                    // agrega un icon para e;iminar
                                                     Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              right: 15),
-                                                      child: IconButton(
-                                                          icon: const Icon(
-                                                              Icons.delete),
-                                                          onPressed: () async {
-                                                            await getCanchasResevered
-                                                                .deleteCancha(
-                                                                    cancha.id);
-                                                          }),
-                                                    ),
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .only(
+                                                                right: 15),
+                                                        child:
+                                                            DeleteBottomAlert(
+                                                          getCanchasResevered:
+                                                              getCanchasResevered,
+                                                          cancha: cancha,
+                                                        )),
                                                   ],
                                                 ),
                                                 const SizedBox(
@@ -194,12 +192,9 @@ class ReservasProgramadasCard extends StatelessWidget {
                                                       margin:
                                                           const EdgeInsets.only(
                                                               left: 10),
-                                                      height:
-                                                          20, // Ajusta la altura según necesites
-                                                      width:
-                                                          1, // Ajusta el ancho para el grosor del divisor
-                                                      color: Colors
-                                                          .grey, // Color del divisor
+                                                      height: 20,
+                                                      width: 1,
+                                                      color: Colors.grey,
                                                     ),
                                                     const SizedBox(width: 8),
                                                     Text('\$ ${cancha.price}',
