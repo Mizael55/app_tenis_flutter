@@ -197,7 +197,7 @@ class ReservasProgramadasCard extends StatelessWidget {
                                                       color: Colors.grey,
                                                     ),
                                                     const SizedBox(width: 8),
-                                                    Text('\$ ${cancha.price}',
+                                                    Text('\$${cancha.price}',
                                                         style: const TextStyle(
                                                             color: Colors.black,
                                                             fontSize: 16)),

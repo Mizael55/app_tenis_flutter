@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
               width: size.width,
               height: size.height * 0.1,
               padding: const EdgeInsets.only(top: 20, left: 20),
-              child:  Text(
+              child: Text(
                 'Hola $userName!',
                 style: const TextStyle(
                   color: Colors.black,

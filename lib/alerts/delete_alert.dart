@@ -15,7 +15,6 @@ class DeleteBottomAlert extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
         onPressed: () async {
-          // Mostrar diálogo de confirmación
           final bool confirmDelete = await showDialog(
                 context: context,
                 builder: (BuildContext context) {

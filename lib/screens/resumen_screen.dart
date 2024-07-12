@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../models/models.dart';
+import '../providers/providers.dart';
 import '../widgets/widgets.dart';
 
 class ResumeScreen extends StatelessWidget {
@@ -9,6 +11,10 @@ class ResumeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final getWeather = Provider.of<WeatherProvider>(context).weatherData;
+    getWeather.isEmpty
+        ? Provider.of<WeatherProvider>(context).fetchWeatherData()
+        : null;
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
@@ -71,6 +77,7 @@ class ResumeScreen extends StatelessWidget {
                   children: [
                     ReserveDetails(
                       reserveDetails: true, reserveDetailsCanchaSelected: canchaDetails,
+                       weather: getWeather[0]['app_temp'].toString(),
                     ),
                     ResumeCard(reserveDetailsCanchaSelected: canchaDetails,),
                     PayCard(reserveDetailsCanchaSelected: canchaDetails,)

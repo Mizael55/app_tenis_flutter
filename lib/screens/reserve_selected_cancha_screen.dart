@@ -3,9 +3,11 @@ import '../models/models.dart';
 import '../widgets/widgets.dart';
 
 class ReserveScreen extends StatefulWidget {
-  const ReserveScreen({super.key, required this.canchaDetails});
+  const ReserveScreen(
+      {super.key, required this.canchaDetails, required this.weather});
 
   final CanchasModels canchaDetails;
+  final String weather;
 
   @override
   State<ReserveScreen> createState() => _ReserveScreenState();
@@ -33,7 +35,6 @@ class _ReserveScreenState extends State<ReserveScreen> {
                     fit: BoxFit.cover,
                   ),
                 ),
-
                 Positioned(
                   top: 50,
                   left: 20,
@@ -76,8 +77,10 @@ class _ReserveScreenState extends State<ReserveScreen> {
                 child: Column(
                   children: [
                     ReserveDetails(
-                        reserveDetails: false,
-                        reserveDetailsCanchaSelected: widget.canchaDetails),
+                      reserveDetails: false,
+                      reserveDetailsCanchaSelected: widget.canchaDetails,
+                      weather: widget.weather,
+                    ),
                     SelectingScheduleAndBottom(
                         canchaDetails: widget.canchaDetails),
                   ],

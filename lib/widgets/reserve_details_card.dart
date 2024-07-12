@@ -9,9 +9,11 @@ class ReserveDetails extends StatefulWidget {
     super.key,
     required this.reserveDetails,
     required this.reserveDetailsCanchaSelected,
+    required this.weather,
   });
   final bool reserveDetails;
   final CanchasModels reserveDetailsCanchaSelected;
+  final String weather;
 
   @override
   State<ReserveDetails> createState() => _ReserveDetailsState();
@@ -109,9 +111,9 @@ class _ReserveDetailsState extends State<ReserveDetails> {
                       fit: BoxFit.cover,
                     ),
                     const SizedBox(width: 5),
-                    const Text(
-                      '30%',
-                      style: TextStyle(
+                    Text(
+                      widget.weather,
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 20,
                       ),

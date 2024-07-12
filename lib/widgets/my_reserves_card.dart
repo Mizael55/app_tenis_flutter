@@ -88,9 +88,9 @@ class MyReservasCard extends StatelessWidget {
                                           fit: BoxFit.cover,
                                         ),
                                         const SizedBox(width: 5),
-                                        const Text(
-                                          '30%',
-                                          style: TextStyle(
+                                        Text(
+                                          cancha.weather,
+                                          style: const TextStyle(
                                             color: Colors.black,
                                             fontSize: 20,
                                           ),
