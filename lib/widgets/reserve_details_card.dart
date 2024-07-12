@@ -27,6 +27,7 @@ class _ReserveDetailsState extends State<ReserveDetails> {
   String? selectedItem = 'Agregar Instructor';
   @override
   Widget build(BuildContext context) {
+    final userName = Provider.of<UserProvider>(context).userName;
     final canchaFormProvider = Provider.of<CanchaFormProvider>(context);
     final size = MediaQuery.of(context).size;
 
@@ -136,9 +137,15 @@ class _ReserveDetailsState extends State<ReserveDetails> {
                     style: TextStyle(color: Colors.black, fontSize: 18)),
               ],
             ),
+            const SizedBox(height: 8),
+            Text('Selecciona un instructor ($userName)',
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold)),
             if (!widget.reserveDetails)
               Container(
-                margin: const EdgeInsets.only(top: 15),
+                margin: const EdgeInsets.only(top: 10),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 8,
                 ),
@@ -166,8 +173,8 @@ class _ReserveDetailsState extends State<ReserveDetails> {
                       child: Text(value),
                     );
                   }).toList(),
-                  isExpanded:
-                      true,),
+                  isExpanded: true,
+                ),
               )
           ],
         ),

@@ -60,7 +60,7 @@ class _SelectingScheduleAndBottomState
   @override
   Widget build(BuildContext context) {
     final canchaFormProvider = Provider.of<CanchaFormProvider>(context);
-    final userName = Provider.of<UserProvider>(context).userName;
+    final getSpecificDayWeather = Provider.of<WeatherProvider>(context);
     final Size size = MediaQuery.of(context).size;
     return Container(
       color: Colors.blue[50],
@@ -72,11 +72,35 @@ class _SelectingScheduleAndBottomState
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             Text('Establecer fecha y hora ($userName)',
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('Establecer fecha y hora',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold)),
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.cloudy_snowing,
+                      color: Colors.black,
+                      size: 22,
+                    ),
+                    const SizedBox(width: 2),
+                    getSpecificDayWeather.weatherSelecteDate == ''
+                        ? const Text('0%')
+                        : Text(
+                            '${getSpecificDayWeather.weatherSelecteDate}%',
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                            ),
+                          ),
+                  ],
+                ),
+              ],
+            ),
             const SizedBox(height: 10),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 8),
@@ -97,10 +121,12 @@ class _SelectingScheduleAndBottomState
                   IconButton(
                       icon: const Icon(Icons.keyboard_arrow_down_rounded,
                           size: 25),
-                      onPressed: () async{
-                      await  _selectDate(context);
+                      onPressed: () async {
+                        await _selectDate(context);
                         canchaFormProvider.fecha =
                             DateFormat('yyyy-MM-dd').format(selectedDate!);
+                        await getSpecificDayWeather.getWeatherByDate(
+                            canchaFormProvider.fecha.toString());
                       }),
                 ],
               ),
@@ -128,8 +154,8 @@ class _SelectingScheduleAndBottomState
                       IconButton(
                           icon: const Icon(Icons.keyboard_arrow_down_rounded,
                               size: 25),
-                          onPressed: ()async {
-                           await _selectTime(context, isStartTime: true);
+                          onPressed: () async {
+                            await _selectTime(context, isStartTime: true);
                             canchaFormProvider.horaInicio =
                                 startTime!.format(context);
                           }),
@@ -156,8 +182,8 @@ class _SelectingScheduleAndBottomState
                       IconButton(
                           icon: const Icon(Icons.keyboard_arrow_down_rounded,
                               size: 25),
-                          onPressed: () async{
-                          await  _selectTime(context, isStartTime: false);
+                          onPressed: () async {
+                            await _selectTime(context, isStartTime: false);
                             canchaFormProvider.horaFin =
                                 endTime!.format(context);
                           }),
@@ -208,7 +234,9 @@ class _SelectingScheduleAndBottomState
                           topRight: Radius.circular(20),
                         ),
                       ),
-                      content: Center(child: Text('Por favor, complete los campos',
+                      content: Center(
+                          child: Text(
+                        'Por favor, complete los campos',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 15,

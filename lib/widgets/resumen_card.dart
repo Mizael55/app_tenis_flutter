@@ -9,13 +9,9 @@ class ResumeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     
     final canchaFormProvider = Provider.of<CanchaFormProvider>(context);
     final Size size = MediaQuery.of(context).size;
     final getSpecificDayWeather = Provider.of<WeatherProvider>(context);
-    if (getSpecificDayWeather.weatherSelecteDate == '') {
-       getSpecificDayWeather.getWeatherByDate(canchaFormProvider.fecha.toString());
-    }
     return Container(
         width: size.width,
         height: size.height * 0.2 - 30,
