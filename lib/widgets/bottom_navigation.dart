@@ -35,7 +35,6 @@ class BottomNavigation extends StatelessWidget {
       showSelectedLabels: true,
       showUnselectedLabels: true,
       backgroundColor: Colors.white,
-      // agregale un color de fondo al icono seleccionado
     );
   }
 }
