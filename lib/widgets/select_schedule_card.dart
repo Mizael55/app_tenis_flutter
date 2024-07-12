@@ -123,10 +123,10 @@ class _SelectingScheduleAndBottomState
                           size: 25),
                       onPressed: () async {
                         await _selectDate(context);
-                        canchaFormProvider.fecha =
+                        canchaFormProvider.date =
                             DateFormat('yyyy-MM-dd').format(selectedDate!);
                         await getSpecificDayWeather.getWeatherByDate(
-                            canchaFormProvider.fecha.toString());
+                            canchaFormProvider.date.toString());
                       }),
                 ],
               ),
@@ -222,7 +222,7 @@ class _SelectingScheduleAndBottomState
             const SizedBox(height: 30),
             GestureDetector(
               onTap: () {
-                if (canchaFormProvider.fecha.isEmpty ||
+                if (canchaFormProvider.date.isEmpty ||
                     canchaFormProvider.horaInicio.isEmpty ||
                     canchaFormProvider.horaFin.isEmpty ||
                     canchaFormProvider.instructor.isEmpty) {

@@ -69,7 +69,7 @@ class ResumeCard extends StatelessWidget {
                     children: [
                       const Icon(Icons.calendar_today_outlined, size: 20),
                       const SizedBox(width: 5),
-                      Text(canchaFormProvider.fecha.toString(),
+                      Text(canchaFormProvider.date.toString(),
                           style: const TextStyle(fontSize: 15)),
                     ],
                   ),

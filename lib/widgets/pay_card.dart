@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../alerts/alert.dart';
 import '../models/models.dart';
 import '../providers/providers.dart';
 import '../routes/route_bottom_navigation.dart';
 
-class PayCard extends StatelessWidget {
+class PayCard extends StatefulWidget {
   const PayCard({super.key, required this.reserveDetailsCanchaSelected});
   final CanchasModels reserveDetailsCanchaSelected;
+
+  @override
+  State<PayCard> createState() => _PayCardState();
+}
+
+class _PayCardState extends State<PayCard> {
+  static bool _hasExecutedForData1 = false;
+  static bool _hasExecutedForData2 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +24,7 @@ class PayCard extends StatelessWidget {
     final canchaFormProvider = Provider.of<CanchaFormProvider>(context);
     final getSpecificDayWeather = Provider.of<WeatherProvider>(context);
     final addCanchaToDB = Provider.of<CanchasProvider>(context);
-    final originPrice = reserveDetailsCanchaSelected.price;
+    final originPrice = widget.reserveDetailsCanchaSelected.price;
     final total = int.parse(originPrice) * canchaFormProvider.horas;
     final totalString = total.toString();
 
@@ -67,33 +76,56 @@ class PayCard extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () async {
-                await addCanchaToDB.newCancha(
+                final data = await addCanchaToDB.newCancha(
                   AddCanchasModel(
-                    title: reserveDetailsCanchaSelected.title,
-                    type: reserveDetailsCanchaSelected.type,
-                    image: reserveDetailsCanchaSelected.image,
+                    title: widget.reserveDetailsCanchaSelected.title,
+                    type: widget.reserveDetailsCanchaSelected.type,
+                    image: widget.reserveDetailsCanchaSelected.image,
                     price: totalString,
                     horas: canchaFormProvider.horas.toString(),
-                    starthour: reserveDetailsCanchaSelected.starthour,
-                    endhour: reserveDetailsCanchaSelected.endhour,
-                    date: canchaFormProvider.fecha.toString(),
+                    starthour: widget.reserveDetailsCanchaSelected.starthour,
+                    endhour: widget.reserveDetailsCanchaSelected.endhour,
+                    date: canchaFormProvider.date.toString(),
                     comment: canchaFormProvider.comment,
                     renter: userName,
                     instructor: canchaFormProvider.instructor,
                     weather: getSpecificDayWeather.weatherSelecteDate,
                     createdAt: DateTime.now(),
-                    reserveNum: reserveDetailsCanchaSelected.reserveNum,
+                    canchaType: widget.reserveDetailsCanchaSelected.canchaType,
                   ),
+                  canchaFormProvider.date.toString(),
+                  widget.reserveDetailsCanchaSelected.starthour,
+                  widget.reserveDetailsCanchaSelected.endhour,
+                  widget.reserveDetailsCanchaSelected.canchaType,
                 );
-
                 getSpecificDayWeather.weatherSelecteDate = '';
 
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SelectScreenRoute(),
-                  ),
-                );
+                if (!_hasExecutedForData1 && data == 1) {
+                  _hasExecutedForData1 = true;
+                  return await reserveCreated(
+                      context, widget.reserveDetailsCanchaSelected.canchaType);
+                }
+
+                if (_hasExecutedForData1) {
+                  if (data == 1) {
+                    return await maxReserve(context,
+                        widget.reserveDetailsCanchaSelected.canchaType);
+                  }
+
+                  if (!_hasExecutedForData2 && data == 2) {
+                    _hasExecutedForData2 = true;
+                    return reserveCreated(
+                      context, widget.reserveDetailsCanchaSelected.canchaType);
+                  }
+
+                  if(data == 2){
+                    return await reserveAlreadyExist(context,);
+                  }
+
+                  return await reserveCreated(
+                      context, widget.reserveDetailsCanchaSelected.canchaType);
+                }
+
               },
               child: Container(
                 width: size.width,

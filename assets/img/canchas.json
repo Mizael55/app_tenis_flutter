@@ -8,7 +8,7 @@
         "available": true,
         "starthour": "7:00 am",
         "endhour": "5:00 pm",
-        "reserveNum": 1
+        "canchaType": "A"
     },
     {
         "id": 2,
@@ -19,7 +19,7 @@
         "available": true,
         "starthour": "7:00 am",
         "endhour": "5:00 pm",
-        "reserveNum": 2
+        "canchaType": "B"
     },
     {
         "id": 3,
@@ -30,7 +30,7 @@
         "available": true,
         "starthour": "7:00 am",
         "endhour": "5:00 pm",
-        "reserveNum": 3
+        "canchaType": "C"
 
     }
 ]

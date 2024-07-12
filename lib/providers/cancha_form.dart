@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class CanchaFormProvider extends ChangeNotifier {
-  String _fecha = '';
+  String _date = '';
   String _horaInicio = '';
   String _horaFin = '';
   String _instructor = '';
   String _comment = '';
 
-  String get fecha => _fecha;
+  String get date => _date;
   String get horaInicio => _horaInicio;
   String get horaFin => _horaFin;
   String get instructor => _instructor;
@@ -18,7 +18,7 @@ class CanchaFormProvider extends ChangeNotifier {
   }
 
   void reset() {
-    _fecha = '';
+    _date = '';
     _horaInicio = '';
     _horaFin = '';
     _instructor = '';
@@ -60,8 +60,8 @@ class CanchaFormProvider extends ChangeNotifier {
   return horas;
 }
 
-  set fecha(String value) {
-    _fecha = value;
+  set date(String value) {
+    _date = value;
     notifyListeners();
   }
 

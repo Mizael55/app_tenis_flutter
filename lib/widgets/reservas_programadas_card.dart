@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../alerts/delete_alert.dart';
+import '../alerts/alert.dart';
 import '../providers/providers.dart';
 
 class ReservasProgramadasCard extends StatelessWidget {

@@ -11,13 +11,15 @@ class CanchasProvider extends ChangeNotifier {
   get canchas => _canchas;
   get canchasRenteredList => canchasRentered;
 
-  Future<AddCanchasModel> newCancha(AddCanchasModel valor) async {
-    final id = await DBProvider.db.newCancha(valor);
+  Future<int> newCancha(AddCanchasModel newCancha, String date,
+      String startTime, String endTime, String canchaType) async {
+    final id = await DBProvider.db
+        .newCancha(newCancha, date, startTime, endTime, canchaType);
     // Asignar el ID de la base de datos al modelo
-    valor.id = id;
-    canchasRentered.add(valor);
-    notifyListeners();
-    return valor;
+    newCancha.id = id;
+    canchasRentered.add(newCancha);
+    await loadAllCanchaRentered();
+    return id;
   }
 
   loadAllCanchaRentered() async {
