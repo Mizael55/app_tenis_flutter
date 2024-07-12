@@ -178,9 +178,20 @@ class _InitSessionScreenState extends State<InitSessionScreen> {
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(20),
+                                          topRight: Radius.circular(20),
+                                        ),
+                                      ),
                                       content: Center(
                                         child: Text(
-                                            'El email o la contraseña son incorrectos'),
+                                            'El email o la contraseña son incorrectos',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                            )),
                                       ),
                                     ),
                                   );

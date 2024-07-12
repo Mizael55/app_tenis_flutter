@@ -137,16 +137,16 @@ class CanchasCard extends StatelessWidget {
                                             color: Colors.black, fontSize: 16)),
                                     const SizedBox(width: 2),
                                     const CircleAvatar(
-                                      radius: 5,
+                                      radius: 4,
                                       backgroundColor: Colors.blue,
                                     ),
                                     const SizedBox(width: 2),
                                     const Icon(
                                       Icons.access_time,
                                       color: Colors.black,
-                                      size: 20,
+                                      size: 16,
                                     ),
-                                    const SizedBox(width: 4),
+                                    const SizedBox(width: 1),
                                     !cancha.available
                                         ? const Text('Horario',
                                             style: TextStyle(
