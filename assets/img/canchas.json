@@ -7,7 +7,8 @@
         "price": "25",
         "available": true,
         "starthour": "7:00 am",
-        "endhour": "5:00 pm"
+        "endhour": "5:00 pm",
+        "reserveNum": 1
     },
     {
         "id": 2,
@@ -17,7 +18,8 @@
         "price": "50",
         "available": true,
         "starthour": "7:00 am",
-        "endhour": "5:00 pm"
+        "endhour": "5:00 pm",
+        "reserveNum": 2
     },
     {
         "id": 3,
@@ -27,6 +29,8 @@
         "price": "100",
         "available": true,
         "starthour": "7:00 am",
-        "endhour": "5:00 pm"
+        "endhour": "5:00 pm",
+        "reserveNum": 3
+
     }
 ]

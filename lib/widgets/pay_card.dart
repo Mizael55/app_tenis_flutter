@@ -13,7 +13,7 @@ class PayCard extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     final userName = Provider.of<UserProvider>(context, listen: false).userName;
     final canchaFormProvider = Provider.of<CanchaFormProvider>(context);
-    final getSpecificDayWeather = Provider.of<WeatherProvider>(context).weatherSelecteDate;
+    final getSpecificDayWeather = Provider.of<WeatherProvider>(context);
     final addCanchaToDB = Provider.of<CanchasProvider>(context);
     final originPrice = reserveDetailsCanchaSelected.price;
     final total = int.parse(originPrice) * canchaFormProvider.horas;
@@ -80,10 +80,13 @@ class PayCard extends StatelessWidget {
                     comment: canchaFormProvider.comment,
                     renter: userName,
                     instructor: canchaFormProvider.instructor,
-                    weather: getSpecificDayWeather,
+                    weather: getSpecificDayWeather.weatherSelecteDate,
                     createdAt: DateTime.now(),
+                    reserveNum: reserveDetailsCanchaSelected.reserveNum,
                   ),
                 );
+
+                getSpecificDayWeather.weatherSelecteDate = '';
 
                 Navigator.push(
                   context,

@@ -45,7 +45,8 @@ class DBProvider {
             instructor TEXT,
             horas TEXT,
             weather TEXT,
-            created_at TEXT
+            created_at TEXT,
+            reserveNum INTEGER
           )
         ''');
 
