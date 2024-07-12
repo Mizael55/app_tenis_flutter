@@ -18,7 +18,7 @@ class CanchasCard extends StatelessWidget {
         : null;
 
     return getWeather.isEmpty
-        ?  const Center(child: CircularProgressIndicator.adaptive())
+        ?  const Center(child: Center(child: CircularProgressIndicator.adaptive()))
         : SizedBox(
             width: size.width,
             height: size.height * 0.6,
