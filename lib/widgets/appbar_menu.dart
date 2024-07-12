@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../screens/screens.dart';
+
 class AppBarMenu extends StatelessWidget {
    const AppBarMenu({
     super.key,
@@ -38,6 +40,14 @@ class AppBarMenu extends StatelessWidget {
           icon: const Icon(Icons.notifications_outlined,
               size: 30, color: Colors.white),
           onPressed: () {},
+        ),
+        // log out button
+        IconButton(
+          icon: const Icon(Icons.logout, size: 25, color: Colors.white),
+          onPressed: () {
+            Navigator.pushReplacement(context, 
+              MaterialPageRoute(builder: (context) => const InitSessionScreen()));
+          },
         ),
         IconButton(
           icon: const Icon(Icons.menu, size: 30, color: Colors.white),

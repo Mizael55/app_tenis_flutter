@@ -35,13 +35,13 @@ class ReservesDoneScreen extends StatelessWidget {
                 Icon(
                   Icons.calendar_today_outlined,
                   color: Colors.white,
-                  size: 30,
+                  size: 25,
                 ),
                 SizedBox(width: 10),
                 Text(
                   'Programar reserva',
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
