@@ -139,15 +139,15 @@ class CanchasCard extends StatelessWidget {
                                   ? const Text('Horario',
                                       style: TextStyle(
                                           color: Colors.black, fontSize: 16))
-                                  :
-                              Flexible(
-                                child: Text(
-                                    '${cancha.starthour} - ${cancha.endhour}',
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 1,
-                                    style: const TextStyle(
-                                        color: Colors.black, fontSize: 16)),
-                              ),
+                                  : Flexible(
+                                      child: Text(
+                                          '${cancha.starthour} - ${cancha.endhour}',
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
+                                          style: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 16)),
+                                    ),
                             ],
                           ),
                         ),
@@ -172,7 +172,9 @@ class CanchasCard extends StatelessWidget {
                             margin: const EdgeInsets.only(top: 40),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color:  cancha.available ? const Color.fromARGB(255, 92, 141, 9) : Colors.grey,
+                              color: cancha.available
+                                  ? const Color.fromARGB(255, 92, 141, 9)
+                                  : Colors.grey,
                             ),
                             child: const Center(
                                 child: Text('Reservar',

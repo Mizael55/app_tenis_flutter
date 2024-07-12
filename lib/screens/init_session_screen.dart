@@ -53,6 +53,7 @@ class _InitSessionScreenState extends State<InitSessionScreen> {
         ]),
         Expanded(
           child: Container(
+            color: Colors.white,
             width: size.width,
             padding: const EdgeInsets.symmetric(
               horizontal: 30,

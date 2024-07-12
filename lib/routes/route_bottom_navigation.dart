@@ -12,7 +12,6 @@ class SelectScreenRoute extends StatelessWidget {
     final getCanchasList = Provider.of<CanchasProvider>(context, listen: false);
     final currentIndex = handleRouteProvider.selectedMenuOpt;
     
-
     switch (currentIndex) {
       case 0:
         getCanchasList.getCanchasJson();

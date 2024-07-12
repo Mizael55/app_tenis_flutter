@@ -22,7 +22,7 @@ class _RegisterSessionScreenState extends State<RegisterSessionScreen> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final addUser = Provider.of<UserProvider>(context);
+    final user = Provider.of<UserProvider>(context);
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Column(children: <Widget>[
@@ -59,6 +59,7 @@ class _RegisterSessionScreenState extends State<RegisterSessionScreen> {
         ]),
         Expanded(
           child: Container(
+            color: Colors.white,
             width: size.width,
             padding: const EdgeInsets.symmetric(
               horizontal: 30,
@@ -237,7 +238,7 @@ class _RegisterSessionScreenState extends State<RegisterSessionScreen> {
                         GestureDetector(
                           onTap: () async {
                             if (formKey.currentState!.validate()) {
-                              await addUser.createUser(
+                              final data = await user.createUser(
                                 UserModel(
                                   name: nameController.text,
                                   email: emailController.text,
@@ -247,6 +248,9 @@ class _RegisterSessionScreenState extends State<RegisterSessionScreen> {
                                       confirmPasswordController.text,
                                 ),
                               );
+
+                              user.setUser = data.name;
+
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(

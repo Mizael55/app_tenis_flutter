@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final getCanchasList = Provider.of<CanchasProvider>(context).canchas;
-    final userName = Provider.of<UserProvider>(context, listen: false).userDetails;
+    final userName = Provider.of<UserProvider>(context).userName;
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,

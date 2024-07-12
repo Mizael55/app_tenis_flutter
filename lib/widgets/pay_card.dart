@@ -12,7 +12,7 @@ class PayCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final userName =
-        Provider.of<UserProvider>(context, listen: false).userDetails;
+        Provider.of<UserProvider>(context, listen: false).userName;
     final canchaFormProvider = Provider.of<CanchaFormProvider>(context);
     final addCanchaToDB = Provider.of<CanchasProvider>(context);
     final originPrice = reserveDetailsCanchaSelected.price;
