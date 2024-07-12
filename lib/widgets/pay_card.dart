@@ -13,8 +13,8 @@ class PayCard extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     final userName = Provider.of<UserProvider>(context, listen: false).userName;
     final canchaFormProvider = Provider.of<CanchaFormProvider>(context);
+    final getSpecificDayWeather = Provider.of<WeatherProvider>(context).weatherSelecteDate;
     final addCanchaToDB = Provider.of<CanchasProvider>(context);
-    final getSpecificDayWeather = Provider.of<WeatherProvider>(context);
     final originPrice = reserveDetailsCanchaSelected.price;
     final total = int.parse(originPrice) * canchaFormProvider.horas;
     final totalString = total.toString();
@@ -67,9 +67,6 @@ class PayCard extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () async {
-              final weather =  await getSpecificDayWeather
-                    .getWeatherByDate(canchaFormProvider.fecha.toString());
-
                 await addCanchaToDB.newCancha(
                   AddCanchasModel(
                     title: reserveDetailsCanchaSelected.title,
@@ -83,7 +80,7 @@ class PayCard extends StatelessWidget {
                     comment: canchaFormProvider.comment,
                     renter: userName,
                     instructor: canchaFormProvider.instructor,
-                    weather: weather,
+                    weather: getSpecificDayWeather,
                     createdAt: DateTime.now(),
                   ),
                 );

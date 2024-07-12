@@ -8,6 +8,14 @@ class WeatherProvider extends ChangeNotifier {
   final String country = 'DO';
   final int days = 30;
   List weatherData = [];
+  String weatherSelecteDate = '';
+
+  String get getWeather => weatherSelecteDate;
+
+  set setWeather(String value) {
+    weatherSelecteDate = value;
+    notifyListeners();
+  }
 
   Future<void> fetchWeatherData() async {
     final url =
@@ -33,6 +41,8 @@ class WeatherProvider extends ChangeNotifier {
       final weather = data['data'][0]['clouds'];
       final weatherInt = weather.toInt();
       final weatherString = weatherInt.toString();
+      weatherSelecteDate = weatherString;
+      notifyListeners();
       return weatherString;
     } else {
       throw Exception('Error al cargar los datos');

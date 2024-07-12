@@ -9,8 +9,13 @@ class ResumeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     
     final canchaFormProvider = Provider.of<CanchaFormProvider>(context);
     final Size size = MediaQuery.of(context).size;
+    final getSpecificDayWeather = Provider.of<WeatherProvider>(context);
+    if (getSpecificDayWeather.weatherSelecteDate == '') {
+       getSpecificDayWeather.getWeatherByDate(canchaFormProvider.fecha.toString());
+    }
     return Container(
         width: size.width,
         height: size.height * 0.2 - 30,
@@ -25,8 +30,33 @@ class ResumeCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Resumen',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text('Resumen',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                       Row(
+                  children: [
+                    const Icon(
+                      Icons.cloudy_snowing,
+                      color: Colors.black,
+                      size: 22,
+                    ),
+                    const SizedBox(width: 2),
+                    getSpecificDayWeather.weatherSelecteDate == ''
+                        ? const CircularProgressIndicator.adaptive()
+                        :
+                    Text(
+                      '${getSpecificDayWeather.weatherSelecteDate}%',
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+                ],
+              ),
               const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
