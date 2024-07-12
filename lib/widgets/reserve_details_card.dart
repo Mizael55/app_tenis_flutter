@@ -138,9 +138,9 @@ class _ReserveDetailsState extends State<ReserveDetails> {
             ),
             if (!widget.reserveDetails)
               Container(
-                margin: const EdgeInsets.only(top: 20),
+                margin: const EdgeInsets.only(top: 15),
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
+                  horizontal: 8,
                 ),
                 width: size.width * 0.6,
                 decoration: BoxDecoration(
@@ -151,7 +151,7 @@ class _ReserveDetailsState extends State<ReserveDetails> {
                   value: selectedItem,
                   icon: const Icon(Icons.keyboard_arrow_down_rounded, size: 30),
                   elevation: 16,
-                  style: const TextStyle(color: Colors.black, fontSize: 18),
+                  style: const TextStyle(color: Colors.black, fontSize: 15),
                   underline: Container(),
                   onChanged: (String? newValue) {
                     setState(() {

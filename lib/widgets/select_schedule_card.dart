@@ -60,6 +60,7 @@ class _SelectingScheduleAndBottomState
   @override
   Widget build(BuildContext context) {
     final canchaFormProvider = Provider.of<CanchaFormProvider>(context);
+    final userName = Provider.of<UserProvider>(context).userName;
     final Size size = MediaQuery.of(context).size;
     return Container(
       color: Colors.blue[50],
@@ -71,12 +72,12 @@ class _SelectingScheduleAndBottomState
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Establecer fecha y hora',
-                style: TextStyle(
+             Text('Establecer fecha y hora ($userName)',
+                style: const TextStyle(
                     color: Colors.black,
-                    fontSize: 24,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold)),
-            const SizedBox(height: 15),
+            const SizedBox(height: 10),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 8),
               padding: const EdgeInsets.symmetric(
@@ -165,10 +166,10 @@ class _SelectingScheduleAndBottomState
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 15),
             const Text('Agregar un comentario',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 20),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 15),
             Container(
               height: 100,
               child: TextField(
@@ -180,7 +181,7 @@ class _SelectingScheduleAndBottomState
                 },
                 decoration: InputDecoration(
                     hintText: "Agrega un comentario...",
-                    filled: true, // Habilita el relleno de color
+                    filled: true,
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -195,7 +196,6 @@ class _SelectingScheduleAndBottomState
             const SizedBox(height: 30),
             GestureDetector(
               onTap: () {
-
                 if (canchaFormProvider.fecha.isEmpty ||
                     canchaFormProvider.horaInicio.isEmpty ||
                     canchaFormProvider.horaFin.isEmpty ||
