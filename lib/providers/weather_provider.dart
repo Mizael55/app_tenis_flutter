@@ -30,7 +30,7 @@ class WeatherProvider extends ChangeNotifier {
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      final weather = data['data'][0]['precip'];
+      final weather = data['data'][0]['clouds'];
       final weatherInt = weather.toInt();
       final weatherString = weatherInt.toString();
       return weatherString;

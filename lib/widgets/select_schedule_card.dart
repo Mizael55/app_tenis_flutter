@@ -111,7 +111,7 @@ class _SelectingScheduleAndBottomState
                   width: size.width * 0.4,
                   margin: const EdgeInsets.symmetric(vertical: 8),
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 5,
+                    horizontal: 4,
                   ),
                   decoration: BoxDecoration(
                     color: Colors.white,

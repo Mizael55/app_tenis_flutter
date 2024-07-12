@@ -84,6 +84,7 @@ class PayCard extends StatelessWidget {
                     renter: userName,
                     instructor: canchaFormProvider.instructor,
                     weather: weather,
+                    createdAt: DateTime.now(),
                   ),
                 );
 

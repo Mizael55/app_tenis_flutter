@@ -31,7 +31,7 @@ class CanchasCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Padding(
-                    padding: EdgeInsets.only(top: 25),
+                    padding: EdgeInsets.only(top: 15),
                     child: Text('Canchas',
                         style: TextStyle(
                           color: Colors.black,
@@ -50,7 +50,7 @@ class CanchasCard extends StatelessWidget {
                         return Container(
                           width: size.width * 0.7,
                           height: size.height * 0.3,
-                          margin: const EdgeInsets.all(10),
+                          margin: const EdgeInsets.only(right: 10),
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey.shade400),
                             borderRadius: BorderRadius.circular(15),
@@ -93,7 +93,7 @@ class CanchasCard extends StatelessWidget {
                                         ),
                                         const SizedBox(width: 5),
                                         Text(
-                                          '${getWeather[0]['precip']}%',
+                                          '${getWeather[0]['clouds']}%',
                                           style: const TextStyle(
                                             color: Colors.black,
                                             fontSize: 20,
@@ -171,7 +171,7 @@ class CanchasCard extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) => ReserveScreen(
-                                              weather: getWeather[0]['precip']
+                                              weather: getWeather[0]['clouds']
                                                   .toString(),
                                               canchaDetails: cancha,
                                             ),
