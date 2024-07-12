@@ -77,7 +77,7 @@ class ResumeScreen extends StatelessWidget {
                   children: [
                     ReserveDetails(
                       reserveDetails: true, reserveDetailsCanchaSelected: canchaDetails,
-                       weather: getWeather[0]['app_temp'].toString(),
+                       weather: getWeather[0]['precip'].toString(),
                     ),
                     ResumeCard(reserveDetailsCanchaSelected: canchaDetails,),
                     PayCard(reserveDetailsCanchaSelected: canchaDetails,)

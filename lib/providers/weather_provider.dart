@@ -10,7 +10,8 @@ class WeatherProvider extends ChangeNotifier {
   List weatherData = [];
 
   Future<void> fetchWeatherData() async {
-    final url = 'http://api.weatherbit.io/v2.0/current?city=$city&country=$country&key=$apiKey&units=M';
+    final url =
+        'http://api.weatherbit.io/v2.0/current?city=$city&country=$country&key=$apiKey&units=M';
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
@@ -22,17 +23,19 @@ class WeatherProvider extends ChangeNotifier {
     }
   }
 
-  Future <String> getWeatherByDate(String date) async{
-    final url = 'http://api.weatherbit.io/v2.0/forecast/daily?city=$city&country=$country&key=$apiKey&units=M&start_date=$date&end_date=$date';
+  Future<String> getWeatherByDate(String date) async {
+    final url =
+        'http://api.weatherbit.io/v2.0/forecast/daily?city=$city&country=$country&key=$apiKey&units=M&start_date=$date&end_date=$date';
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      final weather = data['data'][0]['app_max_temp'].toString();
-      return weather;
+      final weather = data['data'][0]['precip'];
+      final weatherInt = weather.toInt();
+      final weatherString = weatherInt.toString();
+      return weatherString;
     } else {
       throw Exception('Error al cargar los datos');
     }
-
   }
 }

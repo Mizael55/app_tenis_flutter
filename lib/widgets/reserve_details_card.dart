@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../models/models.dart';
 import '../providers/providers.dart';
 
@@ -168,8 +167,7 @@ class _ReserveDetailsState extends State<ReserveDetails> {
                     );
                   }).toList(),
                   isExpanded:
-                      true, // Hace que el DropdownButton se expanda para llenar el Container
-                ),
+                      true,),
               )
           ],
         ),
@@ -177,9 +175,3 @@ class _ReserveDetailsState extends State<ReserveDetails> {
     );
   }
 }
-
-
-//TODO: GUARDAR LOS DATOS EN LA DB, CREAR UN NUEVO MODELO CON LOS DATOS DE LA HORA, ESOS SON LOS QUE SE
-//SE GUARDARAN MODIFICAR EL QUE ESTA AHORA MISMO, 
-
-// GUARDAR LOS DATOS SELECIONADOS EN UN PROVIDER Y DESPUES CUANDO SE LE DE A PAGAR SE GUARDAN EN LA DB

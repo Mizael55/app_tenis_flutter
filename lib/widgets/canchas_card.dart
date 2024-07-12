@@ -93,7 +93,7 @@ class CanchasCard extends StatelessWidget {
                                         ),
                                         const SizedBox(width: 5),
                                         Text(
-                                          getWeather[0]['app_temp'].toString(),
+                                          '${getWeather[0]['precip']}%',
                                           style: const TextStyle(
                                             color: Colors.black,
                                             fontSize: 20,
@@ -171,7 +171,7 @@ class CanchasCard extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) => ReserveScreen(
-                                              weather: getWeather[0]['app_temp']
+                                              weather: getWeather[0]['precip']
                                                   .toString(),
                                               canchaDetails: cancha,
                                             ),
